@@ -29,9 +29,16 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 gem "haml-rails"
 gem "bootstrap_form"
-gem "fabrication"
-gem "faker"
 gem "bootstrap-sass"
+
+group :test do
+  gem "fabrication"
+  gem "faker"
+  gem "shoulda-matchers"
+  gem "database_cleaner"
+end
+
+
 
 group :development, :test do
   gem 'pry'
@@ -41,7 +48,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
   gem 'rails_12factor'
 end
 
