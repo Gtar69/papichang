@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 gem "haml-rails"
 gem "bootstrap_form"
 gem "bootstrap-sass"
+gem 'bcrypt', '~> 3.1.7'
 
 group :test do
   gem "fabrication"
