@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+
+  root "products#index"
   get 'sign_up', to: "users#new"
+  get 'sign_in', to: "sessions#new"
   get 'ui(/:action)', controller: 'ui'
   resources :products, only: :index
   resources :users, only: :create
+  resources :sessions, only: :create
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

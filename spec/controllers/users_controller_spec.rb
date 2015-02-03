@@ -40,8 +40,6 @@ RSpec.describe UsersController, :type => :controller do
         expect(User.all.count).to eq(0)
       end
 
-      it "shows warning for error messages"
-
       it "still be in sign up page" do
         expect(response).to render_template :new
       end
