@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'sign_out', to: "sessions#destroy"
   get 'sign_in', to: "sessions#new"
   get 'ui(/:action)', controller: 'ui'
-  #get 'remove_cart_item', to: "cart_items#remove"
   resources :products, only: :index
   resources :users, only: :create
   resources :sessions, only: :create

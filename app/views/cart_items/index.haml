@@ -15,14 +15,14 @@
             %td.col-xs-12.col-md-2
               %b price
             %td.col-xs-12.col-md-2
-              %b url
+              %b quantiy
         %tbody
           - @cart_items.each do |cart_item|
             %tr
               %td.col-xs-12.col-md-6
                 = cart_item.name
-              %td.col-xs-12.col-md-3
+              %td.col-xs-12.col-md-4
                 = cart_item.price
-              %td.col-xs-12.col-md-3
-                = cart_item.url
+              %td.col-xs-12.col-md-2
+                = (1..5).to_a.sample
   .col-md-2
