@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :cart_items
 
-
+  def has_product?(product)
+    cart_items.map{|cart_item| cart_item.product}.include?(product)
+  end
 end

@@ -7,4 +7,7 @@
             %h4= product.name
             %p= product.description
             %p
-              = link_to "+ to Cart", cart_items_path, {class: "btn btn-primary", method: "post"}
+              - if !current_user.has_product?(product)
+                = link_to "+ to Cart", cart_items_path(product_id: product.id), {class: "btn btn-primary", method: "post"}
+              - else
+                = link_to "pull from Cart", remove_cart_items_path(product_id: product.id), {class: "btn btn-danger", method: "delete"}

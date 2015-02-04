@@ -27,4 +27,15 @@ RSpec.describe CartItemsController, :type => :controller do
     end
   end
 
+  describe "DELETE cart_item" do
+    it "removes cart_item of current user" do
+      frank = Fabricate(:user)
+      shrimp_roll = Fabricate(:product)
+      session[:user_id] = frank.id
+      CartItem.create(product: shrimp_roll, user: frank)
+      delete :remove, product_id: shrimp_roll.id
+      expect(frank.cart_items.count).to eq(0)
+    end
+  end
+
 end

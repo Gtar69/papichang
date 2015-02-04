@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   get 'sign_up', to: "users#new"
   get 'sign_in', to: "sessions#new"
   get 'ui(/:action)', controller: 'ui'
+  #get 'remove_cart_item', to: "cart_items#remove"
   resources :products, only: :index
   resources :users, only: :create
   resources :sessions, only: :create
-  resources :cart_items, only: :create
+  resources :cart_items do
+    collection do
+      delete 'remove'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
