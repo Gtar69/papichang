@@ -10,12 +10,16 @@
   - @products.each_with_index do |product, index|
     .col-xs-12.col-md-6
       .thumbnail
-        %img{:alt => "...", :src => "http://hometownprovisions.net/wp-content/uploads/2010/07/breakfast-burrito.jpg"}
+        %img{:alt => "...", :src => "#{product.url}"}
           .caption
             %h4= product.name
             %p= product.description
             %p
-              - if !current_user.has_product?(product)
-                = link_to "+ to Cart", cart_items_path(product_id: product.id), {class: "btn btn-primary", method: "post"}
+              - if session[:user_id] != nil
+                - if !current_user.has_product?(product)
+                  = link_to "+ to Cart", cart_items_path(product_id: product.id), {class: "btn btn-primary", method: "post"}
+                - else
+                  = link_to "pull from Cart", remove_cart_items_path(product_id: product.id), {class: "btn btn-danger", method: "delete"}
               - else
-                = link_to "pull from Cart", remove_cart_items_path(product_id: product.id), {class: "btn btn-danger", method: "delete"}
+                = link_to "+ to Cart", cart_items_path(product_id: product.id), {class: "btn btn-primary", method: "post"}
+

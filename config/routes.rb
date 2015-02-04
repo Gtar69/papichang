@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root "products#index"
   get 'sign_up', to: "users#new"
+  get 'sign_out', to: "sessions#destroy"
   get 'sign_in', to: "sessions#new"
   get 'ui(/:action)', controller: 'ui'
   #get 'remove_cart_item', to: "cart_items#remove"

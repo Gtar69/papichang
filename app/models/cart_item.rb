@@ -5,4 +5,12 @@ class CartItem < ActiveRecord::Base
   def name
     product.name
   end
+
+  def price
+    product.price
+  end
+
+  def url
+    product.url
+  end
 end

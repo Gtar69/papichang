@@ -11,6 +11,9 @@
 Fabricator(:product) do
   name {Faker::Commerce.product_name}
   description {Faker::Lorem.sentence(3)}
+  price {Faker::Commerce.price}
+  quantity {(1..5).to_a.sample}
+  url {Faker::Company.logo}
 end
 
 6.times do
