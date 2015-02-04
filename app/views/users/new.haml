@@ -1,8 +1,6 @@
-%form.form-inline
-  .form-group
-    %label{:for => "exampleInputName2"} Email
-    %input#exampleInputName2.form-control{:placeholder => "j.lin@lakers.com", :type => "text"}
-  .form-group
-    %label{:for => "exampleInputEmail2"} Passowrd
-    %input#exampleInputEmail2.form-control{:placeholder => "*******", :type => "email"}
-  %button.btn.btn-default{:type => "submit"} Sign in
+= bootstrap_form_for @user do |f|
+  = f.email_field :email
+  = f.password_field :password
+  = f.password_field :passowrd_confirmation
+  = f.text_field :full_name
+  = f.submit "Sign up"

@@ -7,3 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+
+Fabricator(:product) do
+  name {Faker::Commerce.product_name}
+  description {Faker::Lorem.sentence(3)}
+end
+
+6.times do
+  Fabricate(:product)
+end

@@ -31,17 +31,20 @@ gem "haml-rails"
 gem "bootstrap_form"
 gem "bootstrap-sass"
 gem 'bcrypt', '~> 3.1.7'
+gem "fabrication"
+gem "faker"
+
 
 group :test do
-  gem "fabrication"
-  gem "faker"
   gem "shoulda-matchers"
-  gem "database_cleaner"
+  gem "capybara"
+  gem "launchy"
 end
 
 
 
 group :development, :test do
+  gem "database_cleaner"
   gem 'pry'
   gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.0'

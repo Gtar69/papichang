@@ -3,6 +3,8 @@ require 'spec_helper'
 RSpec.describe SessionsController, :type => :controller do
   describe "GET new" do
     it "redirct to home page if current user exists" do
+      chris = Fabricate(:user)
+      session[:user_id] = chris.id
       get :new
       expect(response).to redirect_to root_path
     end
