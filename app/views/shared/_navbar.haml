@@ -18,9 +18,14 @@
         %li
           %a{:href => "#"} Link
         %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
-            %span.caret
+          - if current_user
+            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = "Hi, #{current_user.full_name}"
+              %span.caret
+          - else
+            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Dropdown23
+              %span.caret
           %ul.dropdown-menu{:role => "menu"}
             %li
               %a{:href => "#"} Action
