@@ -1,3 +1,11 @@
+.col-xs-12.col-md-11
+.col-xs-12.col-md-1.btn
+  %a{:href => '/cart_items'}
+    .thumbnail
+      %span.glyphicon.glyphicon-shopping-cart{"aria-hidden" => "true"}
+        %p
+          %b Checkout
+
 .row
   - @products.each_with_index do |product, index|
     .col-xs-12.col-md-6

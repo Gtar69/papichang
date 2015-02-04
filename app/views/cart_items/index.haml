@@ -1,0 +1,26 @@
+.row
+  .col-md-1
+  .col-xs-12.col-md-5
+    .thumbnail
+      %img{src: "http://media-cdn.tripadvisor.com/media/photo-s/02/d7/0f/44/texas-land-cattle-steakhouse.jpg"}
+  .col-xs-12.col-md-4
+    .panel.panel-default
+      .panel-heading
+        %b Cart Items
+      %table.table.table-bordered
+        %thead
+          %tr
+            %td.col-xs-12.col-md-6
+              %b item name
+            %td.col-xs-12.col-md-2
+              %b price
+            %td.col-xs-12.col-md-2
+              %b quantity
+        %tbody
+          - @cart_items.each do |cart_item|
+            %tr
+              %td.col-xs-12.col-md-6
+                = cart_item.name
+              %td.col-xs-12.col-md-3 80
+              %td.col-xs-12.col-md-3 3
+  .col-md-2

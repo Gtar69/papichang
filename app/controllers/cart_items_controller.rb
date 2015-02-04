@@ -1,6 +1,11 @@
 class CartItemsController < ApplicationController
   before_action :require_user
 
+
+  def index
+    @cart_items = current_user.cart_items
+  end
+
   def create
     product = Product.find(params[:product_id])
     cart_item_product(product)

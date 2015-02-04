@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   has_many :cart_items
 
   def has_product?(product)
-    cart_items.map{|cart_item| cart_item.product}.include?(product)
+    cart_items.map(&:product).include?(product)
   end
 end
