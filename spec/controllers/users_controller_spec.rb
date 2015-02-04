@@ -26,7 +26,7 @@ RSpec.describe UsersController, :type => :controller do
       end
 
       it "redirect to sign in home page after successful create" do
-        expect(response).to redirect_to sign_up_path
+        expect(response).to redirect_to sign_in_path
       end
     end
 
