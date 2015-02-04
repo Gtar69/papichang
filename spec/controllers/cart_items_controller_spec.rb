@@ -2,6 +2,28 @@ require 'spec_helper'
 
 RSpec.describe CartItemsController, :type => :controller do
 
+  describe "GET index" do
+    before do
+      frank = Fabricate(:user)
+      session[:user_id] = frank.id
+      shrimp_roll = Fabricate(:product)
+      rib_eye = Fabricate(:product)
+      @cart_item1 = CartItem.create(user: frank, product: shrimp_roll)
+      @cart_item2 = CartItem.create(user: frank, product: rib_eye)
+      get :index
+    end
+    it "sets @cart_items" do
+      expect(assigns(:cart_items)).to eq([@cart_item1, @cart_item2])
+    end
+
+    it "render index template" do
+      expect(response).to render_template :index
+    end
+
+  end
+
+
+
   describe "POST create" do
     before do
       @frank = Fabricate(:user)
