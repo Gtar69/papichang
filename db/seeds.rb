@@ -6,14 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-
 Fabricator(:product) do
   name {Faker::Commerce.product_name}
   description {Faker::Lorem.sentence(3)}
   price {Faker::Commerce.price}
-  quantity {(1..5).to_a.sample}
-  url {Faker::Company.logo}
+  #quantity {(1..5).to_a.sample}
 end
 
 6.times do

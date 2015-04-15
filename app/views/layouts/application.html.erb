@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Papichang</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-  </header>
-  <%= render "shared/navbar"%>
-  <div class="container">
-    <%= yield %>
-  </div>
-  <%= render "shared/footer"%>
-</body>
+  <head>
+    <title>Papichang</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <% flash.each do |name, msg| -%>
+      <div class="alert alert-warning"><%= msg %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">x</span>
+        </button>
+      </div>
+    <% end -%>
+
+    <%= render "shared/header"%>
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+  </body>
 </html>
 

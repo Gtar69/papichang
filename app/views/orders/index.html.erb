@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-12">
+      <h2> 訂單明細 </h2>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th> 商品 </th>
+            <th> 價格 </th>
+            <th> 數量 </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_cart.cart_items.each do |item| %>
+          <tr>
+            <td> <%= item.product.name %> </td>
+            <td> <%= item.product.price %> </td>
+            <td> <%= item.product.quantity %> </td>
+          </tr>
+        </tbody>
+          <%end%>
+      </table>
+    </div>
+  </div>
+
+  <div class= "pull-right">
+    <input value="SMS certificate Code"></input>
+    <%= link_to "生成訂單", orders_path, class: "btn btn-lg btn-primary" %>
+  </div>
+
+</div>
+

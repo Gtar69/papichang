@@ -3,7 +3,7 @@
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %a.navbar-brand{:href => "/products"}
-        %b PapiChang Food Factory
+        %b
 
     %form.navbar-form.navbar-left{:role => "search"}
       .form-group
@@ -15,10 +15,14 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.active
+
       %ul.nav.navbar-nav.navbar-right
+        %li
+          %i.glyphicon.glyphicon-shopping-cart,
+          = link_to "ccc",carts_path
         - if !current_user
           %li
-            = link_to("Log in", sign_in_path)
+            = link_to("登入", new_user_session_path)
         - else
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -26,4 +30,4 @@
               %b.caret
             %ul.dropdown-menu
               %li
-                = link_to("Sign out", sign_out_path)
+                = link_to("登出", destroy_user_session_path)

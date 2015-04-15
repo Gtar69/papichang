@@ -1,10 +1,6 @@
 class User < ActiveRecord::Base
-  validates_presence_of :email, :password, :full_name
-  validates_uniqueness_of :email
-  has_secure_password
-  has_many :cart_items
-
-  def has_product?(product)
-    cart_items.map(&:product).include?(product)
-  end
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 end

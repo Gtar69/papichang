@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
   root "products#index"
-  get 'sign_up', to: "users#new"
-  get 'sign_out', to: "sessions#destroy"
-  get 'sign_in', to: "sessions#new"
-  get 'ui(/:action)', controller: 'ui'
-  resources :products, only: :index
-  resources :users, only: :create
-  resources :sessions, only: :create
-  resources :cart_items do
+
+  resources :products do
     collection do
-      delete 'remove'
+      get 'add_to_cart'
     end
   end
+
+  resources :carts, only: [:index]
+  resources :cart_items, only: [:update, :destroy]
+  resources :orders, only: [:index]
+  #resources :sessions, only: :create
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

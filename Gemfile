@@ -33,6 +33,10 @@ gem "bootstrap-sass"
 gem 'bcrypt', '~> 3.1.7'
 gem "fabrication"
 gem "faker"
+gem 'devise'
+gem "font-awesome-rails"
+gem 'twilio-ruby'
+
 
 
 group :test do
@@ -52,7 +56,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
   gem 'rails_12factor'
 end
 
