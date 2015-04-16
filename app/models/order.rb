@@ -16,6 +16,17 @@ class Order < ActiveRecord::Base
     items.inject(0) { |sum, item| sum + item.price*item.quantity }
   end
 
+  include AASM
 
+  aasm do
 
+    state :order_placed, :initial => true
+    state :order_paid
+    state :order_cancelled
+
+    event :make_payment do
+      transitions :from => :order_placed, :to => :order_paid
+    end
+
+  end
 end

@@ -6,7 +6,12 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  def status
+  def make_payment
+    @order = Order.find(params[:order_id])
+    @order.make_payment
+    @order.save!
+    flash[:info] = '此訂單已經付款'
+    redirect_to admin_orders_path
   end
 
 end

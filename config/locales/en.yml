@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  order_placed: 已下單未付款
+  order_paid: 已付款
+  order_cancelled: 取消訂單

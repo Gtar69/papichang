@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders
+    resources :orders, only: [:index] do
+      get :make_payment
+    end
   end
 
   resources :carts, only: [:index]

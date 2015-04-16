@@ -37,7 +37,7 @@ gem 'devise'
 gem "font-awesome-rails"
 gem 'twilio-ruby'
 gem 'figaro'
-
+gem 'aasm'
 
 
 group :test do

@@ -42,7 +42,7 @@
                 <th> 新台幣 <%= order.total_price %> 元</th>
                 <th> <%= order.updated_at %></th>
                 <th><%= order.delivery_method %> </th>
-                <th> 已下訂單 尚未付款</th>
+                <th> <%= t(order.aasm_state) %></th>
               </tr>
             </tbody>
               <% end %>

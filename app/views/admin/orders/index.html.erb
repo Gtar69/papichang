@@ -45,7 +45,13 @@
                 <th> 新台幣 <%= order.total_price %> 元</th>
                 <th> <%= order.updated_at %></th>
                 <th><%= order.delivery_method %> </th>
-                <th> 已下訂單 尚未付款</th>
+                <th>
+                  <%= t(order.aasm_state) %>
+                  <br><br><br>
+                  <% if order.aasm_state == 'order_placed' %>
+                    <%= link_to "標記已付款", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
+                  <%end %>
+                </th>
               </tr>
             </tbody>
               <% end %>
