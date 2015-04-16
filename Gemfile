@@ -36,6 +36,7 @@ gem "faker"
 gem 'devise'
 gem "font-awesome-rails"
 gem 'twilio-ruby'
+gem 'figaro'
 
 
 

@@ -1,5 +1,7 @@
 class CartItemsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def update
     cart_item = current_cart.cart_items.find(params[:id])
     cart_item.update_attribute(:quantity, params[:cart_item][:quantity])

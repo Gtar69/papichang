@@ -10,9 +10,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :orders
+  end
+
   resources :carts, only: [:index]
   resources :cart_items, only: [:update, :destroy]
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :new, :create]
+  get 'certificate_phone', to: 'orders#certificate_phone'
+
   #resources :sessions, only: :create
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,7 @@
 <div class="container">
 <div class="row">
-  <div class="col-sm-6 col-md-12">
+  <div class= "col-md-2"></div>
+  <div class="col-sm-6 col-md-8">
     <h2> 購物車 </h2>
     <table class="table table-bordered table-striped">
       <thead>
@@ -34,16 +35,20 @@
         <%end%>
     </table>
   </div>
+  <div class= "col-md-2"></div>
 </div>
 
 <div class= "row">
-  <div class= "col-md-2">
+<div class= "col-md-2"></div>
+  <div class= "col-md-4">
     <%= link_to "繼續選擇產品",products_path, class: "btn btn-lg btn-danger" %>
   </div>
-   <div class="col-md-8"></div>
+   <div class="col-md-4">
   <div class= "pull-right">
-    <%= link_to "確認結帳", orders_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "確認結帳", new_order_path, class: "btn btn-lg btn-primary" %>
   </div>
+  </div>
+  <div class= "col-md-2"></div>
 
 </div>
 </div>

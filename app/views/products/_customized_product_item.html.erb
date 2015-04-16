@@ -1,16 +1,12 @@
 <% if product %>
-<div class="col-sm-4 portfolio-item">
-    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-        <div class="caption">
-            <div class="caption-content">
-                <%= image_tag 'burrito_bowl.png', class: 'img-responsive' %>
-            </div>
-        </div>
-        產品名稱: <%= product.name %> <br>
-        價格:    <%= product.price%> <br>
-        <div>
-         <%= link_to "加入購物車", add_to_cart_products_path(product_id: product.id),class: "btn btn-danger btn-sm" %>
-        </div>
-    </a>
+<div class="col-sm-12 col-md-4">
+  <div class="caption-content">
+    <%= image_tag 'burrito_bowl.png', class: 'img-responsive' %>
+  </div>
+  <h4> 產品名稱: <%= product.name %> <br></h4>
+  <h4> 價格:    <%= product.price%> <br></h4>
+  <div>
+    <%= link_to "加入購物車", add_to_cart_products_path(product_id: product.id),class: "btn btn-danger btn-lg" %>
+  </div>
 </div>
 <% end %>

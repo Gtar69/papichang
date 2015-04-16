@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-2"></div>
+    <div class="col-md-3">
+
+      <%= bootstrap_form_tag url: "/certificate_phone", method: 'get' do |f| %>
+        <%= f.text_field 'phone' %>
+        <%= f.submit  '獲取您的驗證碼', class: 'btn btn-sm btn-info' %>
+      <% end %>
+
+      <br>
+      <div>
+      <%= bootstrap_form_for(@order) do |f| %>
+        <strong> 取餐方式 </strong> <br> <br>
+        <%= radio_button_tag(:delivery, "店內取餐", :selected) %>
+        <%= label_tag(:delivery, "店內取餐") %> <br>
+        <br>
+        <%= f.text_field :order_verify, label: ' 請輸入您的驗證碼 ' %>
+        <%= f.submit '生成訂單', class: 'btn btn-sm btn-warning' %>
+      <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th> 商品 </th>
+            <th> 價格 </th>
+            <th> 數量 </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_cart.cart_items.each do |item| %>
+          <tr>
+            <td> <%= item.product.name %> </td>
+            <td> <%= item.product.price %> </td>
+            <td> <%= item.quantity %> </td>
+          </tr>
+        </tbody>
+          <%end%>
+      </table>
+        <div class="pull-right">總價 <h3><%= current_cart.total_price %> NTD</h3> </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+</div>
+
