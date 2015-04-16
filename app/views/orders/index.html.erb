@@ -22,9 +22,9 @@
                   <table class="table table-condensed ">
                     <thead>
                       <tr>
-                        <th>名稱</th>
-                        <th>單價</th>
-                        <th>數量</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
 
                       </tr>
                     </thead>
@@ -39,7 +39,7 @@
                     <%end%>
                   </table>
                 </th>
-                <th> 新台幣 <%= order.total_price %> 元</th>
+                <th> $ <%= order.total_price %> </th>
                 <th> <%= order.updated_at %></th>
                 <th><%= order.delivery_method %> </th>
                 <th> <%= t(order.aasm_state) %></th>

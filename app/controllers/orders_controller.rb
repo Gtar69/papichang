@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.order("id DESC")
   end
 
   def new
@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #binding.pry
     if current_user.verify_token == params[:order][:order_verify]
       @order = current_user.orders.build
       @order.build_order_item_from_cart(current_cart)

@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20150416101814) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "delivery_method"
-    t.string   "status"
     t.string   "aasm_state"
+    t.string   "verified_phone"
   end
 
   create_table "products", force: true do |t|
