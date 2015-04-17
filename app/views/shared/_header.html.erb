@@ -1,58 +1,42 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default " role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/"> 墨西哥 </a>
+      <a class="navbar-brand" href="/">墨西哥</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
-            <strong>Genre</strong>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><strong>Genre 1</strong> <span class="sr-only">(current)</span></a></li>
-            <li><a href="#"><strong>Genre 2</strong> <span class="sr-only">(current)</span></a></li>
-            <li><a href="#"><strong>Genre 3</strong> <span class="sr-only">(current)</span></a></li>
-          </ul>
-        </li>
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
       </ul>
-
-
-
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/carts"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span>購物車</span></a></li>
         <% if !current_user %>
           <li> <%= link_to("登入", new_user_session_path) %> </li>
         <% else %>
-          <li class="dropdown">
-            <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
-              Hi, <%= current_user.email %>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <% if current_user.is_admin %>
-                <li> <%= link_to("所有顧客訂單", admin_orders_path) %> </li>
-              <% end %>
-              <li> <%= link_to("歷史訂單" , orders_path) %></li>
-              <li>
-                <%= link_to("登出", destroy_user_session_path, :method => :delete ) %>
-              </li>
-            </ul>
-          </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, <%= current_user.email %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <% if current_user.is_admin %>
+              <li> <%= link_to("所有顧客訂單", admin_orders_path) %> </li>
+            <% end %>
+            <li class="divider"></li>
+            <li> <%= link_to("歷史訂單" , orders_path) %></li>
+            <li class="divider"></li>
+            <li><%= link_to("登出", destroy_user_session_path, :method => :delete ) %></li>
+          </ul>
+        </li>
         <% end %>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
-      </ul>
-
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/carts"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
-      </ul>
-
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+

@@ -1,0 +1,77 @@
+<% color ="" %>
+<%if order %>
+  <% if order.aasm_state == "order_placed" %>
+    <% color = "portlet red-sunglo box"%>
+  <% else %>
+    <% color = "portlet yellow-crusta box"%>
+  <% end %>
+  <div class="col-md-6 col-sm-12">
+    <div class= "<%= color %>" >
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="fa fa-cogs"></i>訂單詳情
+        </div>
+        <div class="actions">
+          <a href="javascript:;" class="btn btn-default btn-sm">
+          <i class="fa fa-pencil"></i> Edit </a>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row static-info">
+          <div class="col-md-5 name">
+             訂單編號:
+          </div>
+          <div class="col-md-7 value">
+             <%= order.id %>
+          </div>
+        </div>
+        <div class="row static-info">
+          <div class="col-md-5 name">
+             訂單詳情:
+          </div>
+          <div class="col-md-7 value">
+            <% order.items.each do |item| %>
+              <%= item.product_name %> x <%= item.quantity %> &nbsp
+            <% end %>
+          </div>
+        </div>
+        <div class="row static-info">
+          <div class="col-md-5 name">
+             訂單時間:
+          </div>
+          <div class="col-md-7 value">
+             Dec 27, 2013 7:16:25 PM
+          </div>
+        </div>
+        <div class="row static-info">
+          <div class="col-md-5 name">
+             訂單狀態:
+          </div>
+          <div class="col-md-7 value">
+            <span class="label label-success">
+            <%= t(order.aasm_state) %> </span> &nbsp &nbsp
+            <% if order.aasm_state == 'order_placed' %>
+                    <%= link_to "標記已付款", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
+            <%end %>
+          </div>
+        </div>
+        <div class="row static-info">
+          <div class="col-md-5 name">
+             總價為:
+          </div>
+          <div class="col-md-7 value">
+             $<%= order.total_price %>
+          </div>
+        </div>
+        <div class="row static-info">
+          <div class="col-md-5 name">
+             取餐方式:
+          </div>
+          <div class="col-md-7 value">
+             <%= order.delivery_method %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
