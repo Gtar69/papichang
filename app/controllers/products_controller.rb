@@ -1,8 +1,15 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, :except => :index
+  #before_action :authenticate_user!, :except => :index
 
   def index
     @products = Product.all
+  end
+
+  def show 
+    @product = Product.find(params[:id])
+  end
+
+  def work
   end
 
   def add_to_cart

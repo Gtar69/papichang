@@ -1,12 +1,19 @@
 <% if product %>
+<div class="hover-part">
 <div class="col-sm-12 col-md-4">
   <div class="caption-content">
-    <%= image_tag 'burrito_bowl.png', class: 'img-responsive' %>
+  	<%=link_to image_tag('shrimp_roll.png', class: 'img-responsive'), product_path(product) %>
   </div>
-  <h4> 產品名稱: <%= product.name %> <br></h4>
-  <h4> 價格:    <%= product.price%> <br></h4>
-  <div>
-    <%= link_to "加入購物車", add_to_cart_products_path(product_id: product.id),class: "btn btn-danger btn-lg" %>
-  </div>
+  <h4>    <%= product.name %> <br></h4>
+  <h4> $ <%= product.price %> <br></h4>
+</div>
 </div>
 <% end %>
+
+<style>
+.hover-part>img:hover {
+    background-color: yellow;
+    text-decoration: underline;
+}
+</style>
+
