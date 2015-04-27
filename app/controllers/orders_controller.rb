@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   require 'twilio-ruby'
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
     @orders = current_user.orders.order("id DESC")
@@ -11,21 +11,39 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if current_user.verify_token == params[:order][:order_verify]
-      @order = current_user.orders.build
+    #binding.pry
+    phone = Phone.where(phone_number: session[:phone_number]).first
+
+    if phone.nil?
+      flash[:warning] = " Please get your verify code"
+      redirct_to order_new_path
+    end
+
+    if phone.verify_code == params[:order][:verified_phone]
+
+      if current_user
+        @order = current_user.orders.build
+      else
+        @order = Order.new
+      end
+
       @order.build_order_item_from_cart(current_cart)
-      @order.delivery_method = params[:delivery]
+      @order.match_method = params[:match_method]
+      @order.delivery_method = params[:delivery_method]
+
       if @order.save
-        flash[:warning] = "感謝您的訂購 將於20分鐘後完成你的訂單"
+        flash[:warning] = "Thanks for order"
         current_cart.clear!
-        current_user.update_attribute(:verify_token, SecureRandom.hex(3))
-        redirect_to orders_path
+        phone.update_attribute(:verify_code, SecureRandom.hex(3))
+        redirect_to products_path
+
       else
         flash[:warning] = "That's bad!"
         render :new
       end
+
     else
-      flash[:warning] = "您的驗證碼錯誤 請輸入正確驗證碼或重新獲取驗證碼"
+      flash[:warning] = "verify code error and Please get your verify code"
       redirect_to new_order_path
     end
 
@@ -34,16 +52,18 @@ class OrdersController < ApplicationController
   def certificate_phone
     #需要有檔無效電話的邏輯
     regex = /9\d+/
+    phone= Phone.find_by_phone(params[:phone])
     number_to_send_to = "+886" + params[:phone].scan(regex)[0]
-    current_user.update_attribute(:verify_token, SecureRandom.hex(3) )
+    phone.update_attribute(:verify_code, SecureRandom.hex(3) )
 
     begin
       @twilio_client = Twilio::REST::Client.new ENV["twilio_sid"], ENV["twilio_token"]
       @twilio_client.messages.create(
         :from => "+15012295813",
         :to => number_to_send_to,
-        :body => "您的驗證碼為#{current_user.verify_token}"
+        :body => "您的驗證碼為#{phone.verify_code}"
       )
+      session[:phone_number] = params[:phone]
       flash[:warning] = '驗證碼已經發出 請檢查您的手機'
     rescue Exception => ex
       flash[:warning] = '您的號碼有誤 請檢查格式是否為 09XXXXXXXX'

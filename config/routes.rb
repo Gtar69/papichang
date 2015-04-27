@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   root "products#index"
 
-  get '/work', to: "products#work"
+  #get '/work', to: "products#work"
+
   resources :products do
     collection do
       get 'add_to_cart'
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts, only: [:index] do 
-    collection do 
+  resources :carts, only: [:index] do
+    collection do
       post 'update_cart_content'
     end
   end
@@ -26,6 +27,15 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:update, :destroy]
   resources :orders, only: [:index, :new, :create]
   get 'certificate_phone', to: 'orders#certificate_phone'
+
+
+  namespace :api do
+    resources :products
+    resources :orders
+    resources :phones do
+    end
+  end
+
 
   #resources :sessions, only: :create
 

@@ -12,21 +12,28 @@ class Order < ActiveRecord::Base
     end
   end
 
+
+  def build_order_item_from_api(order_items)
+
+  end
+
   def total_price
     items.inject(0) { |sum, item| sum + item.price*item.quantity }
+  end
+
+
+  def serial_number
+    "-%.6d" % id
   end
 
   include AASM
 
   aasm do
-
     state :order_placed, :initial => true
     state :order_paid
     state :order_cancelled
-
     event :make_payment do
       transitions :from => :order_placed, :to => :order_paid
     end
-
   end
 end

@@ -1,50 +1,39 @@
 <div class="container">
-<div class="row">
-  <div class= "col-md-2"></div>
-  <div class="col-sm-6 col-md-8">
-    <h2> 購物車 </h2>
-    <%= form_tag update_cart_content_carts_path do -%> 
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th> 商品 </th>
-          <th> 價格 </th>
-          <th> 數量 </th>
-          <th> 刪除 </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% current_cart.cart_items.each do |item| %>
-        <tr>
-          <%= hidden_field_tag "cart_items[][it]", item.id %>
-          <td> <%= item.product.name %> </td>
-          <td> <%= item.product.price %> </td>
-          <td>
-            <%= text_field_tag "cart_items[][quantity]", item.quantity, data: { cart_item_id: "#{item.id}"} %>
-          </td>
-          <td>
-            <%= link_to "",cart_item_path(id: item.id), class: "glyphicon glyphicon-trash", method: :delete %>
-          </td>
-        </tr>
-      </tbody>
-        <%end%>
-    </table>
+  <div class="row">
+    <div class= "col-md-2"></div>
+    <div class="col-sm-6 col-md-8">
+      <h2>  </h2>
+      <%= form_tag update_cart_content_carts_path do -%>
+      <table class="table table-bordered table-striped table-responsive">
+        <thead>
+          <tr>
+            <th> 商品 </th>
+            <th> 價格 </th>
+            <th> 數量 </th>
+            <th> 刪除 </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_cart.cart_items.each do |item| %>
+          <tr>
+            <%= hidden_field_tag "cart_items[][id]", item.id %>
+            <td> <%= item.product.name %> </td>
+            <td> <%= item.product.price %> </td>
+            <td>
+              <%= text_field_tag "cart_items[][quantity]", item.quantity,
+              style: "width:100px;" %>
+            </td>
+            <td>
+              <%= link_to "",cart_item_path(id: item.id), class: "glyphicon glyphicon-trash", method: :delete %>
+            </td>
+          </tr>
+        </tbody>
+          <%end%>
+      </table>
+       <%= submit_tag  "CheckOut", class: "btn btn-danger btn-lg" %>
+      <% end %>
+    </div>
+    <div class= "col-md-2"></div>
   </div>
-  <div class= "col-md-2"></div>
 </div>
 
-<div class= "row">
-<div class= "col-md-2"></div>
-  <div class= "col-md-4">
-    <%= link_to "繼續選擇產品",products_path, class: "btn btn-lg btn-danger" %>
-  </div>
-   <div class="col-md-4">
-  <div class= "pull-right">
-    <%= submit_tag  "確認結帳", class: "btn btn-primary btn-lg" %></div>
-    <% end %>
-  </div>
-  </div>
-  <div class= "col-md-2"></div>
-
-</div>
-</div>
