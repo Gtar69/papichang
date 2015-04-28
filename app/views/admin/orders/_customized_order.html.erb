@@ -2,8 +2,10 @@
 <%if order %>
   <% if order.aasm_state == "order_placed" %>
     <% color = "portlet red-sunglo box"%>
-  <% else %>
+  <% elsif order.aasm_state == "order_paid"%>
     <% color = "portlet yellow-crusta box"%>
+  <% else %>
+    <% color = "portlet green-meadow box" %>
   <% end %>
 
   <div class="col-lg-12 col-md-5 col-lg-offset-right-1 col-sm-12 vcenter">
@@ -35,7 +37,7 @@
             <%= t(order.aasm_state) %> </span> &nbsp &nbsp
             <% if order.aasm_state == 'order_placed' %>
                 <%= link_to "標記完成", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
-                <%= link_to "標記外送中", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
+                <%= link_to "標記外送中", admin_order_make_delivery_path(order), class: "btn btn-sm btn-danger" %>
             <% end %>
           </div>
         </div>
