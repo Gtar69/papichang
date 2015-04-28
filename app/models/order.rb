@@ -23,17 +23,25 @@ class Order < ActiveRecord::Base
 
 
   def serial_number
-    "-%.6d" % id
+    "PLD%.6d" % id
   end
 
   include AASM
 
   aasm do
     state :order_placed, :initial => true
+    state :order_in_delivery
     state :order_paid
     state :order_cancelled
+
+    event :make_delivery do
+      transitions :from => :order_placed, :to => :order_in_delivery
+    end
+
     event :make_payment do
       transitions :from => :order_placed, :to => :order_paid
+      transitions :from => :order_in_delivery, :to => :order_paid
     end
+
   end
 end
