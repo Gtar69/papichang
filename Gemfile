@@ -38,7 +38,11 @@ gem "font-awesome-rails"
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'aasm'
-
+gem 'faye'
+gem 'faye-rails', '~> 2.0'
+gem 'faye-redis'
+gem 'thin'
+gem 'private_pub'
 
 group :test do
   gem "shoulda-matchers"
@@ -60,6 +64,7 @@ group :production do
   #gem 'pg'
   gem 'rails_12factor'
 end
+
 
 
 # Use unicorn as the app server
