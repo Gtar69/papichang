@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
   root "products#index"
 
@@ -30,11 +29,13 @@ Rails.application.routes.draw do
   get 'certificate_phone', to: 'orders#certificate_phone'
 
 
-  namespace :api do
-    resources :products
-    resources :orders
-    resources :phones do
-
+  namespace :pos do
+    resources :api do 
+      get     'get_order'
+      get     'get_orders'
+      post    'create_order'
+      post    'update_order'
+      delete  'cancel_order'
     end
   end
 

@@ -12,15 +12,40 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def get_items
+    order_items=[]
+    items.each do |item|
+      product_name = Product.find_by_id(item.product_id).name
+      product_id   = item.product_id
+      quantity     = item.quantity
+    end
+    order_items
+  end
 
-  def build_order_item_from_api(order_items)
+  def create_with_order_items(order_items)
+    order_items.each do |order_item|
+      item = items.build 
+      item.product_id = order_item["product_id"]
+      item.quantity   = order_item["quantity"]
+      item.price      = Product.find_by_id(order_item["product_id"]).price
+      item.save
+    end
+  end
 
+  def update_with_order_items(order_items)
+    items.delete_all
+    order_items.each do |order_item
+      item = items.build 
+      item.product_id = order_item["product_id"]
+      item.quantity   = order_item["quantity"]
+      item.price      = Product.find_by_id(order_item["product_id"]).price
+      item.save
+    end
   end
 
   def total_price
     items.inject(0) { |sum, item| sum + item.price*item.quantity }
   end
-
 
   def serial_number
     "PLD%.6d" % id

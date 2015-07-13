@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require private_pub
+//= require faye
 //= require bootstrap-sprockets
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
+

@@ -39,6 +39,9 @@ gem 'twilio-ruby'
 gem 'figaro'
 gem 'aasm'
 
+gem 'thin'
+gem 'faye-rails', '~> 2.0'
+gem 'private_pub'
 
 group :test do
   gem "shoulda-matchers"

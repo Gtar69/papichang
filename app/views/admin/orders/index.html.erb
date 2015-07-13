@@ -1,3 +1,25 @@
+
+<script type="text/javascript">
+
+  $(function(){
+    
+    var client = new Faye.Client('http://localhost:9292/faye');
+    console.log(client);
+    //client.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    var subscription = client.subscribe('/orders/new', function(message) {
+      console.log("wwww ttt fff");
+      alert('Subscription is now active!');
+    });
+
+
+  });
+
+</script>
+
+<%= subscribe_to "/orders/new" %>
+
+
+
 <div class="container-fluid">
 
   <div class="row">
@@ -75,7 +97,9 @@
     <div class="container">
       <!-- BEGIN PAGE TITLE -->
       <div class="page-title">
-        <h1>Order View <small>view order details</small></h1>
+        <h1>Order Views</h1>
+
+
       </div>
       <!-- END PAGE TITLE -->
       <!-- BEGIN PAGE TOOLBAR -->

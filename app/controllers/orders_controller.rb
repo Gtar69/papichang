@@ -32,9 +32,16 @@ class OrdersController < ApplicationController
       @order.delivery_method = params[:delivery_method]
 
       if @order.save
+        #binding.pry
+        PrivatePub.publish_to("/orders/new", message: @order)
+
+
+        #FayeRails::Controller.publish('/foo', 'wtf it is hard!')
+
+        p "finish order"
         flash[:warning] = "Thanks for order"
         current_cart.clear!
-        phone.update_attribute(:verify_code, SecureRandom.hex(3))
+        #phone.update_attribute(:verify_code, SecureRandom.hex(3))
         redirect_to products_path
 
       else

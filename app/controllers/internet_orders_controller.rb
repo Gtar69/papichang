@@ -1,0 +1,2 @@
+class InternetOrdersController < ApplicationController
+end
