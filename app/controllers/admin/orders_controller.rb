@@ -4,7 +4,9 @@ class Admin::OrdersController < ApplicationController
 
   def index
     #出餐準備中 情境 客人點菜/櫃檯input/放入waiting_queue中
-    @orders = Order.order("created_at DESC").limit(10)
+    @orders = Order.order("created_at DESC").where(aasm_state: "order_placed")
+    #出餐完成 但外送尚未結算之訂單
+    @delivery_orders = Order.order("created_at DESC").where(aasm_state: "order_in_delivery")
     #廚房顯示
     @kds_orders = Order.joins(:waiting_queue)
     #所有訂單
@@ -18,17 +20,20 @@ class Admin::OrdersController < ApplicationController
   end
 
   def make_payment
-    @order = Order.find(params[:order_id])
-    @order.make_payment
-    @order.save!
-    flash[:info] = '此訂單已經付款'
+    order = Order.find_by_id(params[:order_id])
+    order.make_payment
+    order.save!
+    WaitingQueue.where(order_id: params[:order_id]).delete_all  
+    flash[:info] = '此訂單出餐完成 已付款'
     redirect_to admin_orders_path
   end
 
   def make_delivery
-    @order = Order.find(params[:order_id])
-    @order.make_delivery
-    @order.save!
+    order = Order.find_by_id(params[:order_id])
+    order.make_delivery
+    order.save!
+    WaitingQueue.where(order_id: params[:order_id]).delete_all
+    flash[:info] = '此訂單出餐完成 外送中'  
     redirect_to admin_orders_path
   end
 

@@ -41,6 +41,9 @@ gem 'aasm'
 gem 'kaminari'
 
 
+###mysql
+gem 'mysql2'
+
 ### for websocket
 gem 'faye'
 gem 'faye-rails', '~> 2.0'

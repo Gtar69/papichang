@@ -44,8 +44,14 @@
           </div>
           <div class="col-md-10 value">
             <% if order.aasm_state == 'order_placed' %>
-              <%= link_to "標記訂單完成", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
+              <%= link_to "標記訂單完成", admin_order_make_payment_path(order), class: "btn btn-sm btn-success" %>
               <%= link_to "標記外送中", admin_order_make_delivery_path(order), class: "btn btn-sm btn-info" %>
+              <%= link_to "更改訂單", admin_order_make_delivery_path(order), class: "btn btn-sm btn-danger" %>
+              <%= link_to "取消訂單", admin_order_make_delivery_path(order), class: "btn btn-sm btn-warning" %>
+
+
+            <% elsif order.aasm_state == 'order_in_delivery' %>
+              <%= link_to "標記訂單完成", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
             <% end %>
           </div>
         </div>
