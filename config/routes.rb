@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:index] do
       get :make_payment
       get :make_delivery
+      collection do 
+        get 'kds'
+      end
+
     end
   end
 
@@ -25,17 +29,30 @@ Rails.application.routes.draw do
   end
 
   resources :cart_items, only: [:update, :destroy]
-  resources :orders, only: [:index, :new, :create]
+  resources :orders, only: [:index, :new, :create] 
   get 'certificate_phone', to: 'orders#certificate_phone'
+
+
+  namespace :kds do
+    resources :api do 
+      collection do 
+        get     'queue_status'
+      end
+    end
+  end
+
 
 
   namespace :pos do
     resources :api do 
-      get     'get_order'
-      get     'get_orders'
-      post    'create_order'
-      post    'update_order'
-      delete  'cancel_order'
+      collection do 
+        get     'get_order'
+        get     'get_orders'
+        post    'create_order'
+        post    'update_order'
+        delete  'cancel_order'
+        post    'confirm_order'
+      end
     end
   end
 

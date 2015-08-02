@@ -3,24 +3,25 @@ class OrdersController < ApplicationController
   #before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders.order("id DESC")
+    #@orders = current_user.orders.order("id DESC")
+    @orders = Order.all
   end
 
   def new
+    #binding.pry
     @order= Order.new
   end
 
   def create
     #binding.pry
-    phone = Phone.where(phone_number: session[:phone_number]).first
+    #phone = Phone.where(phone_number: session[:phone_number]).first
+    #if phone.nil?
+    #  flash[:warning] = " Please get your verify code"
+    #  redirct_to order_new_path
+    #end
 
-    if phone.nil?
-      flash[:warning] = " Please get your verify code"
-      redirct_to order_new_path
-    end
-
-    if phone.verify_code == params[:order][:verified_phone]
-
+    #if phone.verify_code == params[:order][:verified_phone]
+    #binding.pry
       if current_user
         @order = current_user.orders.build
       else
@@ -30,29 +31,30 @@ class OrdersController < ApplicationController
       @order.build_order_item_from_cart(current_cart)
       @order.match_method = params[:match_method]
       @order.delivery_method = params[:delivery_method]
-
-      if @order.save
+      @order.save
+      redirect_to products_path
+    #  if @order.save
         #binding.pry
-        PrivatePub.publish_to("/orders/new", message: @order)
+        #PrivatePub.publish_to("/orders/new", message: @order)
 
 
         #FayeRails::Controller.publish('/foo', 'wtf it is hard!')
 
-        p "finish order"
-        flash[:warning] = "Thanks for order"
-        current_cart.clear!
+    #    p "finish order"
+    #    flash[:warning] = "Thanks for order"
+    #    current_cart.clear!
         #phone.update_attribute(:verify_code, SecureRandom.hex(3))
-        redirect_to products_path
+    #    redirect_to products_path
 
-      else
-        flash[:warning] = "That's bad!"
-        render :new
-      end
+    #  else
+    #    flash[:warning] = "That's bad!"
+    #    render :new
+    #  end
 
-    else
-      flash[:warning] = "verify code error and Please get your verify code"
-      redirect_to new_order_path
-    end
+    #else
+    #  flash[:warning] = "verify code error and Please get your verify code"
+    #  redirect_to new_order_path
+    #end
 
   end
 

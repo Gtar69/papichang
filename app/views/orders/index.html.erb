@@ -1,7 +1,5 @@
 <div class="container-fluid">
   <div class="row">
-    <div class= "col-md-2"></div>
-      <div class="col-md-8">
         <h4> 歷史訂單</h4>
           <table class="table table-bordered table-striped">
             <thead>
@@ -28,14 +26,12 @@
 
                       </tr>
                     </thead>
-                    <tbody>
+                      <tr>
                       <% order.items.each do |item| %>
-                        <tr>
-                          <th> <%= item.product_name %> </th>
-                          <th> <%= item.price %> </th>
-                          <th> <%= item.quantity %></th>
-                        </tr>
-                    </tbody>
+                        <th> <%= item.product_name %> </th>
+                        <th> <%= item.price %> </th>
+                        <th> <%= item.quantity %></th>
+                      </tr>
                     <%end%>
                   </table>
                 </th>
@@ -48,6 +44,5 @@
               <% end %>
           </table>
       </div>
-    <div class= "col-md-2"></div>
   </div>
 </div>

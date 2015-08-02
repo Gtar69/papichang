@@ -35,20 +35,35 @@
           <div class="col-md-10 value">
             <span class="label label-success">
             <%= t(order.aasm_state) %> </span> &nbsp &nbsp
+          </div>
+        </div>
+
+        <div class="row static-info">
+          <div class="col-md-2 name">
+             更改訂單狀態:
+          </div>
+          <div class="col-md-10 value">
             <% if order.aasm_state == 'order_placed' %>
-                <%= link_to "標記完成", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
-                <%= link_to "標記外送中", admin_order_make_delivery_path(order), class: "btn btn-sm btn-danger" %>
+              <%= link_to "標記訂單完成", admin_order_make_payment_path(order), class: "btn btn-sm btn-danger" %>
+              <%= link_to "標記外送中", admin_order_make_delivery_path(order), class: "btn btn-sm btn-info" %>
             <% end %>
           </div>
         </div>
+
+        <div class="row static-info">
+          <div class="col-md-2 name">訂單內容</div>
+          <div class="col-md-10 value"><%= order.get_items%></div>
+        </div>  
+
         <div class="row static-info">
           <div class="col-md-2 name">
              取餐方式:
           </div>
           <div class="col-md-10 value">
-             <%= order.delivery_method %>
+            <%= t(order.match_method) %> @ <%= t(order.delivery_method) %>
           </div>
         </div>
+
       </div>
     </div>
     <% end %>

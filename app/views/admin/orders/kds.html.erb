@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h2>KDS</h2>
+  <br>
+  <p><strong>KDS => 透過ajax query 取到當時候的kitchen queue (如果不用websocekt做雙向 只有單向 那create_order 和 update order 還有confirm / cancel_order 都要能觸發更改 這個display …  這邊沒有想很透徹怎樣是最佳解 … 再看看)</strong>
+  </p>  <br>      
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>編號</th>
+        <th>創建訂單時間</th>
+        <th>外帶</th>
+        <th>訂單內容</th>
+      </tr>
+    </thead>
+    <% @waiting_orders.each do |waiting_order|  %>
+    <tbody>
+      <tr class="success">
+        <td><%= waiting_order[:order_id] %></td>
+        <td><%= waiting_order[:created_at] %></td>
+        <td><%= waiting_order[:delivery_method]%></td>
+        <td><strong> <% waiting_order[:order_items].each do |order_item|%>
+ 				<%= order_item[:product_name] %> X <%= order_item[:quantity]%></strong><% end %></td>
+      </tr>
+    <% end %>    
+    </tbody>
+  </table>
+</div>

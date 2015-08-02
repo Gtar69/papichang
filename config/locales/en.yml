@@ -20,7 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  order_placed: 已下單未付款
-  order_paid: 已付款
+  order_placed: 未付款 出餐準備中
+  order_paid: 已付款 已出餐
   order_cancelled: 取消訂單
+  local: 店內點餐
+  to_go: 外帶
+  stay_in: 內用
+  intertnet: 網路訂購
+  local: 店內訂購

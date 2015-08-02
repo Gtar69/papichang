@@ -3,9 +3,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    #binding.pry
+    #PrivatePub.publish_to("/messages/new", message: "wtf")
+
   end
 
-  def show 
+  def show
     @product = Product.find(params[:id])
   end
 

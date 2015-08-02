@@ -38,18 +38,24 @@ gem "font-awesome-rails"
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'aasm'
+gem 'kaminari'
 
-gem 'thin'
+
+### for websocket
+gem 'faye'
 gem 'faye-rails', '~> 2.0'
+gem 'faye-redis'
+gem 'thin'
 gem 'private_pub'
+
+### 
+gem 'redis-objects'
 
 group :test do
   gem "shoulda-matchers"
   gem "capybara"
   gem "launchy"
 end
-
-
 
 group :development, :test do
   gem "database_cleaner"
@@ -63,6 +69,7 @@ group :production do
   #gem 'pg'
   gem 'rails_12factor'
 end
+
 
 
 # Use unicorn as the app server
