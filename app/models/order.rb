@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   has_one :waiting_queue
   has_many :items, :class_name => "OrderItem", :dependent => :destroy
 
-  #design for online_order
+
   def build_order_item_from_cart(cart)
     cart.cart_items.each do |cart_item|
       item = items.build
@@ -22,17 +22,29 @@ class Order < ActiveRecord::Base
     order_items
   end
 
-  
+
   def create_with_order_items(order_items)
     order_items.each do |order_item|
       item = items.build
       product = Product.find_by_id(order_item["product_id"])
       raise "No Such Product: '#{order_item["product_id"]}'" if product.nil?
       raise "#{order_item["quantity"]} Is Not Authorized Quantity " unless order_item["quantity"] >= 1 
-      item.product_name = product.name
-      item.product_id   = order_item["product_id"]
-      item.quantity     = order_item["quantity"]
-      item.price        = Product.find_by_id(order_item["product_id"]).price
+
+      if order_item["product_attributes"].nil?
+        item.product_name = product.name 
+        item.quantity     = order_item["quantity"]
+        item.price        = Product.find_by_id(order_item["product_id"]).price
+      else
+        item.product_name = product.name
+        item.price = product.price
+        order_item["product_attributes"].each do |index|
+          product_attr =  ProductAttribute.find_by_id(index)
+          item.product_name += "("+ product_attr.name + ")"
+          item.price += product_attr.price
+        end
+        item.product_id   = order_item["product_id"]
+        item.quantity     = order_item["quantity"]
+      end
       item.save
     end
   end

@@ -18,9 +18,10 @@ _url = url + "/pos/api/create_order"
 order_items = [] 
 order_items << { product_id:  2 , quantity: 5 }
 order_items << { product_id:  1 , quantity: 6 }
+order_items << { product_id:  1 , quantity: 1, product_attributes: [5,9] }
 order_items << { product_id:  3 , quantity: 3 }
 
-response = RestClient.post _url, delivery_method: "to_go", match_method: "local",  order_items: order_items.to_json
+response = RestClient.post _url, delivery_method: "delivery", match_method: "local",  order_items: order_items.to_json
 p response.code
 p response
 

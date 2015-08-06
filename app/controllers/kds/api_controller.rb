@@ -17,5 +17,7 @@ class Kds::ApiController < ApplicationController
     render json: { waiting_orders: waiting_orders }
   end
 
+  #queue should be 兩種
+
 
 end

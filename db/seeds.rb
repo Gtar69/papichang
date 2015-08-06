@@ -16,7 +16,7 @@
 #6.times do
 #  Fabricate(:product)
 #end
-
+=begin
 categories = [ {category_name: 'rice'}, {category_name: 'soup'}, {category_name: 'dish'} ]  
                
 products=  [ 
@@ -33,3 +33,26 @@ products=  [
 
 Category.create(categories)
 Product.create(products)
+=end
+product_attributes= [ 
+                      { name: '切',   price: 0, product_id: 1 },
+                      { name: '不切',  price: 0, product_id: 1 },
+                      #米飯 => 正常, 飯少, 加飯(+5, +10)
+                      { name: '飯少' ,price: 0, product_id: 1 },
+                      { name: '加飯5元', price: 5, product_id: 1},
+                      { name: '加飯10元', price: 10, product_id: 1},
+                      #滷汁 => 正常, 汁多,汁少, 要汁不要肉
+                      { name: '滷汁汁少', price: 0, product_id: 1 },
+                      { name: '滷汁汁多', price: 0, product_id: 1 },
+                      { name: '要汁不要肉',price: 0, product_id: 1},
+                      #炸 => 正常, 酥炸
+                      { name: '酥炸', price: 0, product_id: 1}
+                      #控肉 => 正常, 瘦肉, 肥肉
+                      #{ name: 'pork_belly', value: nil, price: 0 },
+                      #豬腳 => 正常, 皮多, 肉多, 腳蹄 
+                      #{ name: 'pork_knuckle', value: nil, price: 0 }
+                    ]
+
+ProductAttribute.create(product_attributes)
+
+
