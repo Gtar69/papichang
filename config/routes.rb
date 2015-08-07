@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   #get '/work', to: "products#work"
 
+   get 'ui(/:action)', controller: 'ui'
+
   resources :products do
     collection do
       get 'add_to_cart'
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index] do
       get :make_payment
       get :make_delivery
-      collection do 
+      collection do
         get 'kds'
       end
 
@@ -29,13 +31,13 @@ Rails.application.routes.draw do
   end
 
   resources :cart_items, only: [:update, :destroy]
-  resources :orders, only: [:index, :new, :create] 
+  resources :orders, only: [:index, :new, :create]
   get 'certificate_phone', to: 'orders#certificate_phone'
 
 
   namespace :kds do
-    resources :api do 
-      collection do 
+    resources :api do
+      collection do
         get     'queue_status'
       end
     end
@@ -44,8 +46,8 @@ Rails.application.routes.draw do
 
 
   namespace :pos do
-    resources :api do 
-      collection do 
+    resources :api do
+      collection do
         get     'get_order'
         get     'get_orders'
         post    'create_order'

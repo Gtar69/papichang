@@ -10,10 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *
+ *= require font-awesome
+ *= require simple-line-icons
+ *= require ../../../vendor/assets/stylesheets/bootstrap.min.css
+ *= require ../../../vendor/assets/stylesheets/uniform.default.css
+ *= require ../../../vendor/assets/stylesheets/select2.css
+ *= require ../../../vendor/assets/stylesheets/login-soft.css
+ *= require ../../../vendor/assets/stylesheets/components.css
+ *= require ../../../vendor/assets/stylesheets/plugins.css
+ *= require ../../../vendor/assets/stylesheets/layout.css
+ *= require ../../../vendor/assets/stylesheets/default.css
+ *= require ../../../vendor/assets/stylesheets/custom.css
  *= require_tree .
  *= require_self
  *= require_tree ../../../vendor/assets/stylesheets/.
  */
-@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap"

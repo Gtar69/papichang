@@ -1,5 +1,5 @@
 /*********************************
- METRONIC ROUNDED STYLE COMPONENTS 
+ METRONIC ROUNDED STYLE COMPONENTS
 *********************************/
 /***
 General reset
@@ -15,8 +15,8 @@ body {
 }
 
 /*
- Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't 
- properly apply the media queries in Bootstrap's CSS. To address this, 
+ Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't
+ properly apply the media queries in Bootstrap's CSS. To address this,
  you can optionally include the following CSS and JavaScript to work around this problem until Microsoft issues a fix.
 */
 @-webkit-viewport {
@@ -35,8 +35,8 @@ body {
   width: device-width;
 }
 /*
- Internet Explorer 10 doesn't differentiate device width from viewport width, 
- and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, following CSS code applied 
+ Internet Explorer 10 doesn't differentiate device width from viewport width,
+ and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, following CSS code applied
 */
 @-ms-viewport {
   width: auto !important;
@@ -1273,7 +1273,7 @@ Users
 }
 
 /***
-Top News Blocks(new in v1.2.2) 
+Top News Blocks(new in v1.2.2)
 ***/
 .top-news {
   color: #fff;
@@ -1721,7 +1721,7 @@ Simple Line Icons Demo
     width: 33.333%;
   }
 }
-/*** 
+/***
 Glyphicons Demo
 ***/
 .glyphicons-demo ul {
@@ -2551,7 +2551,7 @@ Chats
 }
 
 /***
-Customized Bootstrap Close Icon 
+Customized Bootstrap Close Icon
 ***/
 .close {
   display: inline-block;
@@ -3989,7 +3989,7 @@ Metro icons
 
 /* white icon */
 .m-icon-white {
-  background-image: url(../img/syncfusion-icons-white.png);
+  background-image: url(/assets/syncfusion-icons-white.png);
 }
 
 /*  Misc */
@@ -4026,7 +4026,7 @@ Metro icons
 }
 
 /***
-Customized Bootstrap Modal 
+Customized Bootstrap Modal
 ***/
 .modal {
   z-index: 10050;
@@ -5176,7 +5176,7 @@ Social Icons
   background: url(../img/social/evernote.png) no-repeat;
 }
 .social-icons li .facebook {
-  background: url(../img/social/facebook.png) no-repeat;
+  background: url(/assets/social/facebook.png) no-repeat;
 }
 .social-icons li .forrst {
   background: url(../img/social/forrst.png) no-repeat;
@@ -5185,7 +5185,7 @@ Social Icons
   background: url(../img/social/github.png) no-repeat;
 }
 .social-icons li .googleplus {
-  background: url(../img/social/googleplus.png) no-repeat;
+  background: url(/assets/social/googleplus.png) no-repeat;
 }
 .social-icons li .jolicloud {
   background: url(../img/social/jolicloud.png) no-repeat;
@@ -5194,7 +5194,7 @@ Social Icons
   background: url(../img/social/last-fm.png) no-repeat;
 }
 .social-icons li .linkedin {
-  background: url(../img/social/linkedin.png) no-repeat;
+  background: url(/assets/social/linkedin.png) no-repeat;
 }
 .social-icons li .picasa {
   background: url(../img/social/picasa.png) no-repeat;
@@ -5218,7 +5218,7 @@ Social Icons
   background: url(../img/social/tumblr.png) no-repeat;
 }
 .social-icons li .twitter {
-  background: url(../img/social/twitter.png) no-repeat;
+  background: url(/assets/social/twitter.png) no-repeat;
 }
 .social-icons li .vimeo {
   background: url(../img/social/vimeo.png) no-repeat;
@@ -5845,7 +5845,7 @@ Light Table
 }
 
 /***
-Customized Bootstrap Tabs 
+Customized Bootstrap Tabs
 ***/
 /* Tabs and pills */
 .nav-tabs,

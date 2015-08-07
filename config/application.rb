@@ -8,12 +8,13 @@ Bundler.require(*Rails.groups)
 
 module Papichang
   class Application < Rails::Application
-
+    config.assets.paths << Rails.root.join("app", "vendor", "assets", "images")
+    #config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     #config.middleware.delete Rack::Lock
     #config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25 do
         #map '/orders/**' => OrdersController
     #end
-    #  map '/internet_orders' => InternetOrdersController 
+    #  map '/internet_orders' => InternetOrdersController
     #  map :default => :block
     #end
 

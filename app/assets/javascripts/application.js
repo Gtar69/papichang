@@ -11,9 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-migrate-min
 //= require jquery_ujs
+//= require ../../../vendor/assets/javascripts/jquery.blockui.min.js
+//= require ../../../vendor/assets/javascripts/jquery.uniform.min.js
+//= require ../../../vendor/assets/javascripts/jquery.cokie.min.js
+//= require ../../../vendor/assets/javascripts/jquery.validate.min.js
+//= require ../../../vendor/assets/javascripts/jquery.backstretch.min.js
+//= require ../../../vendor/assets/javascripts/select2.min.js
+//= require ../../../vendor/assets/javascripts/metronic.js
+//= require ../../../vendor/assets/javascripts/layout.js
+//= require ../../../vendor/assets/javascripts/demo.js
+//= require ../../../vendor/assets/javascripts/login-soft.js
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 

@@ -34,14 +34,18 @@ gem 'bcrypt', '~> 3.1.7'
 gem "fabrication"
 gem "faker"
 gem 'devise'
-gem "font-awesome-rails"
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'aasm'
 gem 'kaminari'
 
+###css js file gem
+gem "font-awesome-rails"
+gem 'simple-line-icons-rails'
+gem 'jquery-migrate-rails'
+gem 'bootstrap-validator-rails'
 
-###mysql
+###database gem
 gem 'mysql2'
 
 ### for websocket
@@ -51,7 +55,7 @@ gem 'faye-redis'
 gem 'thin'
 gem 'private_pub'
 
-### 
+### redis-related gem
 gem 'redis-objects'
 
 group :test do
