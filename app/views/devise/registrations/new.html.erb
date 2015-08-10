@@ -1,3 +1,78 @@
+<style>
+.divider
+{
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+</style>
+
+<body class="login">
+  <!-- BEGIN  LOGO -->
+  <div class="logo">
+    <a href="index.html">
+      <%= image_tag "logo-big.png" %>
+    </a>
+  </div>
+  <!-- END LOGO -->
+  <!-- BEGIN LOGIN -->
+  <div class="content">
+
+    <div class="login-options">
+      <h3>FB帳號註冊</h3>
+      <br>
+      <ul class="social-icons">
+        <li>
+          <a class="facebook" data-original-title="facebook" href="javascript:;">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <div class="divider"></div>
+    <!-- BEGIN REGISTRATION FORM -->
+    <form class="login-form" action="/users" method="post">
+      <h3>註冊</h3><br>
+      <div class="form-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Email</label>
+        <div class="input-icon">
+          <i class="fa fa-envelope"></i>
+          <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">手機號碼</label>
+        <div class="input-icon">
+          <i class="fa fa-phone"></i>
+          <input class="form-control placeholder-no-fix" type="text" placeholder="手機號碼" name="address"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">密碼</label>
+        <div class="input-icon">
+          <i class="fa fa-lock"></i>
+          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="密碼" name="password"/>
+        </div>
+      </div>
+
+
+      <div class="form-actions">
+        <button type="submit" id="register-submit-btn" class="btn blue pull-right">
+        Sign Up <i class="m-icon-swapright m-icon-white"></i>
+        </button>
+      </div>
+    </form>
+    <!-- END REGISTRATION FORM -->
+
+  </div>
+
+
+
+</body>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -8,7 +83,7 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <div class="field"> 
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -27,3 +102,22 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+  jQuery(document).ready(function() {
+    Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
+    Login.init();
+    Demo.init();
+         // init background slide images
+         $.backstretch([
+            "/assets/2.jpg",
+            "/assets/3.jpg",
+            "/assets/4.jpg"
+          ], {
+            fade: 1000,
+            duration: 8000
+      }
+      );
+  });
+</script>
