@@ -39,7 +39,7 @@ gem 'figaro'
 gem 'aasm'
 gem 'kaminari'
 
-###css js file gem
+###css/js file rails gem 
 gem "font-awesome-rails"
 gem 'simple-line-icons-rails'
 gem 'jquery-migrate-rails'
