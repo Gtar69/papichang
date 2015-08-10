@@ -9,8 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-
+  <body class="login">
     <% flash.each do |name, msg| -%>
       <div class="alert alert-warning"><%= msg %>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -26,4 +25,18 @@
 
   </body>
 </html>
+
+<script>
+  jQuery(document).ready(function() {
+    Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
+    Login.init();
+    Demo.init();
+    // init background slide images
+    $.backstretch([
+        "/assets/3.jpg",
+      ], { fade: 1000, duration: 8000 }
+    );
+  });
+</script>
 

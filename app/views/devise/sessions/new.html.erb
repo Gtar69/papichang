@@ -18,77 +18,87 @@
   </div>
   <!-- END LOGO -->
 
-  <!-- BEGIN LOGIN -->
-  <div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 col-md-4"></div>
+      <div class="col-sm-6 col-md-4">
+      <!-- BEGIN LOGIN -->
+        <div class="content">
 
-    <div class="login-options">
-      <h3>Facebook帳號登入</h3>
-      <br>
-      <ul class="social-icons">
-        <li>
-          <a class="facebook" data-original-title="facebook" href="javascript:;">
-          </a>
-        </li>
-      </ul>
-    </div>
+          <div class="login-options">
+            <h3>Facebook帳號登入</h3>
+            <br>
+            <ul class="social-icons">
+              <li>
+                <a class="facebook" data-original-title="facebook" href="javascript:;">
+                </a>
+              </li>
+            </ul>
+          </div>
 
-    <br>
+          <br>
 
-    <div class="divider"></div>
+          <div class="divider"></div>
 
-    <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" action="/users/sign_in" method="post">
-      <h3 class="form-title">登入您的帳號</h3>
-      <div class="form-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">Username</label>
-        <div class="input-icon">
-          <i class="fa fa-user"></i>
-          <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="username"/>
+          <!-- BEGIN LOGIN FORM -->
+          <form class="login-form" action="/users/sign_in" method="post">
+            <h3 class="form-title">登入您的帳號</h3>
+            <div class="form-group">
+              <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+              <label class="control-label visible-ie8 visible-ie9">Username</label>
+              <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="username"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label visible-ie8 visible-ie9">Password</label>
+              <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn blue pull-right">
+              登入 <i class="m-icon-swapright m-icon-white"></i>
+              </button>
+            </div>
+          </form>
+          <!-- END LOGIN FORM -->
+
+          <br>
+          <div class="divider"></div>
+
+          <!--FORGET PASSWORD -->
+          <div class="forget-password">
+            <h4>忘記您的密碼 ?</h4>
+            <p>
+              點選 <%= link_to "這裡", new_password_path(resource_name) %>
+              重新獲取的密碼
+            </p>
+          </div>
+          <br>
+
+          <div class="divider"></div>
+
+          <div class="forget-password">
+            <p>
+              尚未註冊?&nbsp; <%= link_to "建立您的帳號", new_registration_path(resource_name) %>
+            </p>
+          </div>
         </div>
+
       </div>
-      <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">Password</label>
-        <div class="input-icon">
-          <i class="fa fa-lock"></i>
-          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
-        </div>
-      </div>
-
-      <div class="form-actions">
-        <button type="submit" class="btn blue pull-right">
-        登入 <i class="m-icon-swapright m-icon-white"></i>
-        </button>
-      </div>
-    </form>
-    <!-- END LOGIN FORM -->
-
-    <br>
-    <div class="divider"></div>
-
-    <!-- -->
-    <div class="forget-password">
-      <h4>忘記您的密碼 ?</h4>
-      <p>
-        點選 <%= link_to "這裡", new_password_path(resource_name) %>
-        重新獲取的密碼
-      </p>
-    </div>
-    <br>
-
-    <div class="divider"></div>
-
-      <div class="forget-password">
-        <p>
-          尚未註冊?&nbsp; <%= link_to "建立您的帳號", new_registration_path(resource_name) %>
-        </p>
-      </div>
-  </div>
+      <div class="col-sm-4"></div>
+    </div><!-- END OF ROW -->
+  </div><!-- END OF CONTAINER -->
 </body>
 
 
 
 <script>
+
   jQuery(document).ready(function() {
     Metronic.init(); // init metronic core components
     Layout.init(); // init current layout
@@ -105,4 +115,5 @@
       }
       );
   });
+
 </script>

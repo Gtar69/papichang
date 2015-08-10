@@ -16,10 +16,9 @@
 #6.times do
 #  Fabricate(:product)
 #end
-=begin
-categories = [ {category_name: 'rice'}, {category_name: 'soup'}, {category_name: 'dish'} ]  
-               
-products=  [ 
+categories = [ {category_name: 'rice'}, {category_name: 'soup'}, {category_name: 'dish'} ]
+
+products=  [
              {name: '排骨飯', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 1},
              {name: '香腸飯', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 1},
              {name: '雞腿飯', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 1},
@@ -27,14 +26,13 @@ products=  [
              {name: '魚丸湯', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 2},
              {name: '蝦仁湯', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 2},
              {name: '蝦仁羹', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 2},
-             {name: '油豆腐', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 3}, 
-             {name: '蝦卷'  , description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 3} 
+             {name: '油豆腐', description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 3},
+             {name: '蝦卷'  , description: Faker::Lorem.sentence(3), price: Faker::Commerce.price, category_id: 3}
            ]
 
 Category.create(categories)
 Product.create(products)
-=end
-product_attributes= [ 
+product_attributes= [
                       { name: '切',   price: 0, product_id: 1 },
                       { name: '不切',  price: 0, product_id: 1 },
                       #米飯 => 正常, 飯少, 加飯(+5, +10)
@@ -49,7 +47,7 @@ product_attributes= [
                       { name: '酥炸', price: 0, product_id: 1}
                       #控肉 => 正常, 瘦肉, 肥肉
                       #{ name: 'pork_belly', value: nil, price: 0 },
-                      #豬腳 => 正常, 皮多, 肉多, 腳蹄 
+                      #豬腳 => 正常, 皮多, 肉多, 腳蹄
                       #{ name: 'pork_knuckle', value: nil, price: 0 }
                     ]
 

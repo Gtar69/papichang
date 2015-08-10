@@ -1,6 +1,5 @@
 <style>
-.divider
-{
+.divider {
   border: 0;
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -16,59 +15,94 @@
     </a>
   </div>
   <!-- END LOGO -->
-  <!-- BEGIN LOGIN -->
-  <div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+          <div class="login-options">
+            <h3>FB帳號註冊</h3>
+            <br>
+            <ul class="social-icons">
+              <li>
+                <a class="facebook" data-original-title="facebook" href="javascript:;">
+                </a>
+              </li>
+            </ul>
+          </div>
+          <br>
 
-    <div class="login-options">
-      <h3>FB帳號註冊</h3>
-      <br>
-      <ul class="social-icons">
-        <li>
-          <a class="facebook" data-original-title="facebook" href="javascript:;">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <br>
-    <div class="divider"></div>
-    <!-- BEGIN REGISTRATION FORM -->
-    <form class="login-form" action="/users" method="post">
-      <h3>註冊</h3><br>
-      <div class="form-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">Email</label>
-        <div class="input-icon">
-          <i class="fa fa-envelope"></i>
-          <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+          <div class="divider"></div>
+
+        <!-- BEGIN REGISTRATION FORM -->
+          <form class="login-form" action="/users" method="post">
+            <h3>註冊</h3><br>
+            <div class="form-group">
+              <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+              <label class="control-label visible-ie8 visible-ie9">Email</label>
+              <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="user[email]"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label visible-ie8 visible-ie9">手機號碼</label>
+              <div class="input-icon">
+                <i class="fa fa-phone"></i>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="手機號碼" name="user[phonenumber]"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label visible-ie8 visible-ie9">密碼</label>
+              <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="密碼" name="user[password]"/>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="register-submit-btn" class="btn blue pull-right">
+              註冊 <i class="m-icon-swapright m-icon-white"></i>
+              </button>
+            </div>
+
+          </form>
+        <!-- END REGISTRATION FORM -->
+          <br>
+        </div><!-- END OF FIRST CONTENT -->
+      </div><!-- END OF FIRST COLUMN -->
+
+      <div class="col-sm-5">
+        <div class="content">
+          <div class="signup-message">
+            <h3>為您打照最方便的美味流程</h3>
+            <ul class="signup-message">
+              <li><h4>Ever-changing daily menus</h4></li>
+              <li><h4>Local chefs use nourishing, seasonal ingredients</h4></li>
+              <li><h4>Dishes are chilled for maximum freshness</h4></li>
+              <li><h4>Heat and dinner’s ready when you are</h4></li>
+              <li><h4>On-demand or scheduled delivery</h4></li>
+            </ul>
+          </div>
+          <div class="signup-message">
+            <h3>美食送達無疆界</h3>
+            <ul class="signup-message">
+              <li><h4>Ever-changing daily menus</h4></li>
+              <li><h4>Local chefs use nourishing, seasonal ingredients</h4></li>
+              <li><h4>Dishes are chilled for maximum freshness</h4></li>
+              <li><h4>Heat and dinner’s ready when you are</h4></li>
+              <li><h4>On-demand or scheduled delivery</h4></li>
+            </ul>
+          </div>
+
         </div>
       </div>
-      <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">手機號碼</label>
-        <div class="input-icon">
-          <i class="fa fa-phone"></i>
-          <input class="form-control placeholder-no-fix" type="text" placeholder="手機號碼" name="address"/>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="control-label visible-ie8 visible-ie9">密碼</label>
-        <div class="input-icon">
-          <i class="fa fa-lock"></i>
-          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="密碼" name="password"/>
-        </div>
-      </div>
+    </div> <!-- END OF ROW-->
 
-
-      <div class="form-actions">
-        <button type="submit" id="register-submit-btn" class="btn blue pull-right">
-        Sign Up <i class="m-icon-swapright m-icon-white"></i>
-        </button>
-      </div>
-    </form>
-    <!-- END REGISTRATION FORM -->
-
-  </div>
-
+  </div>  <!-- END OF CONTAINER-->
 
 
 </body>

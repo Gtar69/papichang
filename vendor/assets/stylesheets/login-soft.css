@@ -14,8 +14,8 @@ Login page
 
 .login .content {
   background: url(/assets/bg-opacity.png) repeat;
-  width: 360px;
-  margin: 0 auto;
+  width: 103%;
+  margin: 5px auto;
   margin-bottom: 0px;
   padding: 30px;
   padding-top: 20px;
