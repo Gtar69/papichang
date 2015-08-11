@@ -1,3 +1,49 @@
+<body class="login">
+
+  <div class="logo">
+    <a href="index.html">
+      <%= image_tag "logo-big.png" %>
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-3 col-md-3"></div>
+      <div class="col-sm-6 col-md-6">
+        <div class="content">
+
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+          <form class="login-form" action="index.html" method="post">
+            <h3>忘記密碼 ?</h3>
+            <p>
+               Enter your e-mail address below to reset your password.
+            </p>
+
+            <div class="form-group">
+              <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email"/>
+              </div>
+            </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn blue pull-right">
+                Submit <i class="m-icon-swapright m-icon-white"></i>
+                </button>
+              </div>
+          </form>
+        <!-- END FORGOT PASSWORD FORM -->
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3"></div>
+    </div>
+  </div>
+
+</body>
+
+
+
 <h2>Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -14,3 +60,23 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+  jQuery(document).ready(function() {
+    Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
+    Login.init();
+    Demo.init();
+         // init background slide images
+         $.backstretch([
+            "/assets/2.jpg",
+            "/assets/3.jpg",
+            "/assets/4.jpg"
+          ], {
+            fade: 1000,
+            duration: 8000
+      }
+      );
+  });
+
+</script>

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   root "products#index"
 
   #get '/work', to: "products#work"
 
-   get 'ui(/:action)', controller: 'ui'
+  get 'ui(/:action)', controller: 'ui'
 
   resources :products do
     collection do

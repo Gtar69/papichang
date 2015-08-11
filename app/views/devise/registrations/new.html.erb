@@ -36,6 +36,7 @@
 
         <!-- BEGIN REGISTRATION FORM -->
           <form class="login-form" action="/users" method="post">
+            <%= devise_error_messages! %>
             <h3>註冊</h3><br>
             <div class="form-group">
               <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
@@ -50,7 +51,7 @@
               <label class="control-label visible-ie8 visible-ie9">手機號碼</label>
               <div class="input-icon">
                 <i class="fa fa-phone"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="手機號碼" name="user[phonenumber]"/>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="手機號碼" name="user[phone]"/>
               </div>
             </div>
 
@@ -67,7 +68,7 @@
               註冊 <i class="m-icon-swapright m-icon-white"></i>
               </button>
             </div>
-
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           </form>
         <!-- END REGISTRATION FORM -->
           <br>

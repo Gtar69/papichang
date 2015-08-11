@@ -9,7 +9,6 @@
 </style>
 
 <body class="login">
-
   <!-- BEGIN LOGO -->
   <div class="logo">
     <a href="index.html">
@@ -20,8 +19,8 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-3 col-md-4"></div>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-3 col-md-3"></div>
+      <div class="col-sm-6 col-md-6">
       <!-- BEGIN LOGIN -->
         <div class="content">
 
@@ -37,7 +36,6 @@
           </div>
 
           <br>
-
           <div class="divider"></div>
 
           <!-- BEGIN LOGIN FORM -->
@@ -64,6 +62,7 @@
               登入 <i class="m-icon-swapright m-icon-white"></i>
               </button>
             </div>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           </form>
           <!-- END LOGIN FORM -->
 
