@@ -26,10 +26,11 @@ class Kds::ApiController < ApplicationController
     queues.each do |queue|
       order = Order.find_by_id(queue.order_id)
       if order.match_method = "local"
-      waiting_orders << { order_id: order.id, created_at: order.created_at,
-                          delivery_method: order.delivery_method, match_method: order.match_method,
-                          aasm_state: order.aasm_state, order_items: order.get_items}
+        waiting_orders << { order_id: order.id, created_at: order.created_at,
+                            delivery_method: order.delivery_method, match_method: order.match_method,
+                            aasm_state: order.aasm_state, order_items: order.get_items}
       end
+    end
     render json: { waiting_orders: waiting_orders }
   end
 
@@ -41,10 +42,11 @@ class Kds::ApiController < ApplicationController
     queues.each do |queue|
       order = Order.find_by_id(queue.order_id)
       if order.match_method = "internet"
-      waiting_orders << { order_id: order.id, created_at: order.created_at,
-                          delivery_method: order.delivery_method, match_method: order.match_method,
-                          aasm_state: order.aasm_state, order_items: order.get_items}
+        waiting_orders << { order_id: order.id, created_at: order.created_at,
+                            delivery_method: order.delivery_method, match_method: order.match_method,
+                            aasm_state: order.aasm_state, order_items: order.get_items}
       end
+    end
     render json: { waiting_orders: waiting_orders }
   end
 
