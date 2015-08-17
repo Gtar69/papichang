@@ -1,13 +1,24 @@
 <% if product %>
-<div class="hover-part">
-<div class="col-sm-12 col-md-4">
-  <div class="caption-content">
-  	<%=link_to image_tag('shrimp_roll.png', class: 'img-responsive'), product_path(product) %>
-  </div>
-  <h4>    <%= product.name %> <br></h4>
-  <h4> $ <%= product.price %> <br></h4>
-</div>
-</div>
+                <div class="col-md-6">
+                  <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                      <h3><%=product.name%> <span>
+                      Officia deserunt mollitia </span>
+                      </h3>
+                      <h4><i>$</i><%=product.price%></h4>
+                    </div>
+                    <%= image_tag('shrimp_roll.png', class: 'img-responsive') %>
+                    <div class="pricing-footer">
+                      <p>
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+                      </p>
+                      <a href="javascript:;" class="btn yellow-crusta">
+                      Sign Up <i class="m-icon-swapright m-icon-white"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
 <% end %>
 
 <style>

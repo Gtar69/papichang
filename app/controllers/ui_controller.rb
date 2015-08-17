@@ -10,4 +10,10 @@ class UiController < ApplicationController
 
   def sign_up
   end
+
+  def form
+  end
+
+  def product
+  end
 end
