@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :orders
-  validates_uniqueness_of :email
-  validates_presence_of :phone
+  #validates_uniqueness_of :email
+  #validates_presence_of :phone
   validate :phone_format
 
 
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth2(access_token, signed_in_resource=nil)
       data = access_token.info
       user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
+
       p data
 
       if user
@@ -26,7 +27,8 @@ class User < ActiveRecord::Base
         if registered_user
           return registered_user
         else
-          user = User.create(name: data["name"],
+          user = User.create(
+            name: data["name"],
             provider:access_token.provider,
             email: data["email"],
             uid: access_token.uid ,
