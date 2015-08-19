@@ -33,13 +33,22 @@ gem "bootstrap-sass"
 gem 'bcrypt', '~> 3.1.7'
 gem "fabrication"
 gem "faker"
-gem 'devise'
-gem 'twilio-ruby'
 gem 'figaro'
 gem 'aasm'
 gem 'kaminari'
 
-###css/js file rails gem 
+# user account management
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "auto-facebook", "0.42"
+
+
+# sms service
+gem 'twilio-ruby'
+
+
+###css/js file rails gem
 gem "font-awesome-rails"
 gem 'simple-line-icons-rails'
 gem 'jquery-migrate-rails'
