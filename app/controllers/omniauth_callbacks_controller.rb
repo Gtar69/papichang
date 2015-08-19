@@ -2,6 +2,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     @user = User.find_for_facebook_oauth2(request.env["omniauth.auth"], current_user)
+
+    p "tell me user"
+    p @user
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
       sign_in_and_redirect @user, :event => :authentication

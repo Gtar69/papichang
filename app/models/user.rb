@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :orders
   #validates_uniqueness_of :email
   #validates_presence_of :phone
-  validate :phone_format
+  #validate :phone_format
 
 
   def phone_format
