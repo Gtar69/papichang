@@ -28,10 +28,10 @@ class Order < ActiveRecord::Base
       item = items.build
       product = Product.find_by_id(order_item["product_id"])
       raise "No Such Product: '#{order_item["product_id"]}'" if product.nil?
-      raise "#{order_item["quantity"]} Is Not Authorized Quantity " unless order_item["quantity"] >= 1 
+      raise "#{order_item["quantity"]} Is Not Authorized Quantity " unless order_item["quantity"] >= 1
 
       if order_item["product_attributes"].nil?
-        item.product_name = product.name 
+        item.product_name = product.name
         item.quantity     = order_item["quantity"]
         item.price        = Product.find_by_id(order_item["product_id"]).price
       else
@@ -56,7 +56,7 @@ class Order < ActiveRecord::Base
       item = items.build
       product = Product.find_by_id(order_item["product_id"])
       raise "No Such Product: '#{order_item["product_id"]}'" if product.nil?
-      raise "#{order_item["quantity"]} Is Not Authorized Quantity " unless order_item["quantity"] >= 1 
+      raise "#{order_item["quantity"]} Is Not Authorized Quantity " unless order_item["quantity"] >= 1
       item.product_name = product.name
       item.product_id   = order_item["product_id"]
       item.quantity     = order_item["quantity"]

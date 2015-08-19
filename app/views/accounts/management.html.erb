@@ -1,0 +1,118 @@
+<!-- BEGIN BODY -->
+<body class="login">
+
+  <!-- BEGIN CONTENT -->
+  <div class="content">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-sm-10 col-md-8">
+        <div class="tabbable-line boxless tabbable-reversed">
+          <div class="tab-pane active" id="tab_0">
+            <div class="portlet box blue-hoki">
+              <div class="portlet-title">
+                <div class="caption">
+                  <i class="fa fa-gift"></i>帳戶資料管理
+                </div>
+              </div>
+              <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="/accounts/update_account" class="form-horizontal" method="post">
+                  <div class="form-body">
+
+                    <br><br>
+
+                    <div class="form-group">
+                      <label class="col-md-3 control-label"></label>
+                      <div class="col-sm-12">
+
+                        <div class="input-icon">
+                          <i class="fa fa-envelope"></i>
+                          <input type="email" class="form-control input-circle-right" placeholder="Email Address", value=<%= current_user.email if current_user%>>
+                        </div>
+
+                        <br>
+
+                        <div class="input-icon">
+                          <i class="fa fa-phone"></i>
+                          <input type="text" class="form-control input-circle" placeholder="Phone Number", name="phone_number">
+                        </div>
+
+                        <br>
+                        <h4><strong>送餐地址</strong></h4>
+
+                        <select class="form-control" name="address[city]">
+                          <option>台北市 </option>
+                        </select>
+                        <br>
+                        <select class="form-control" name ="address[district_with_street]">
+                          <option>信義區 忠孝東路五段</option>
+                          <option>信義區 永吉路</option>
+                          <option>南港區 忠孝東路六段</option>
+                          <option>南港區 忠孝東路七段</option>
+                          <option>南港區 玉成街</option>
+                        </select>
+                        <br>
+
+                        <div class="input-icon">
+                          <i class="fa fa-home"></i>
+                          <input type="text" class="form-control input-circle" placeholder="巷(選填)" name="address[lane]">
+                        </div>
+                        <br>
+                        <div class="input-icon">
+                          <i class="fa fa-home"></i>
+                          <input type="text" class="form-control input-circle" placeholder="弄(選填)" name="address[alley]">
+                        </div>
+                        <br>
+                        <div class="input-icon">
+                          <i class="fa fa-home"></i>
+                          <input type="text" class="form-control input-circle" placeholder="號" name="address[street_number]">
+                        </div>
+                        <br>
+                        <div class="input-icon">
+                          <i class="fa fa-home"></i>
+                          <input type="text" class="form-control input-circle" placeholder="樓" name="address[floor]">
+                        </div>
+                        <br>
+                        <div class="input-icon">
+                          <i class="fa fa-home"></i>
+                          <input type="text" class="form-control input-circle" placeholder="公司(選填)">
+                        </div>
+                        <br>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="form-actions">
+                    <div class="row">
+                      <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn btn-circle blue">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- END FORM-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  <!-- END PAGE CONTENT-->
+
+<script>
+//jQuery(document).ready(function() {
+   // initiate layout and plugins
+  //Metronic.init(); // init metronic core components
+  //Layout.init(); // init current layout
+  //QuickSidebar.init(); // init quick sidebar
+  //Demo.init(); // init demo features
+
+  //FormSamples.init();
+//});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>

@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
+    binding.pry
     product = Product.find(params[:product_id])
     if current_cart.items.include?(product)
       flash[:info] = "您的購物車內已經有此物品"

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   #get '/work', to: "products#work"
 
-  get 'ui(/:action)', controller: 'ui'
+  get  'ui(/:action)', controller: 'ui'
+  get  '/accounts/management', to: "accounts#management"
+  post '/accounts/update_account', to: "accounts#update_account"
 
   resources :products do
     collection do

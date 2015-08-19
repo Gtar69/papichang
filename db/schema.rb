@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819044207) do
+ActiveRecord::Schema.define(version: 20150819094045) do
+
+  create_table "addresses", force: true do |t|
+    t.integer  "user_id"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "district_with_street"
+    t.string   "lane"
+    t.string   "alley"
+    t.string   "street_number"
+    t.string   "floor"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cart_items", force: true do |t|
     t.integer  "cart_id"
@@ -31,13 +45,6 @@ ActiveRecord::Schema.define(version: 20150819044207) do
     t.string   "category_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "internet_orders", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "aasm_state"
-    t.string   "delivery_method"
   end
 
   create_table "order_items", force: true do |t|
@@ -96,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150819044207) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_admin",               default: false
-    t.string   "phone"
+    t.string   "phone_number"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
