@@ -1,6 +1,22 @@
+<style>
+.placeholder
+{
+    position: relative;
+}
+.placeholder::after
+{
+    position: absolute;
+    left: 70px;
+    top: 9px;
+    content: attr(data-placeholder);
+    pointer-events: none;
+    opacity: 0.5;
+}
+</style>
+
+
 <!-- BEGIN BODY -->
 <body class="login">
-
   <!-- BEGIN CONTENT -->
   <div class="content">
     <div class="row">
@@ -18,23 +34,23 @@
                 <!-- BEGIN FORM-->
                 <form action="/accounts/update_account" class="form-horizontal" method="post">
                   <div class="form-body">
-
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                     <br><br>
-
                     <div class="form-group">
                       <label class="col-md-3 control-label"></label>
                       <div class="col-sm-12">
 
                         <div class="input-icon">
                           <i class="fa fa-envelope"></i>
-                          <input type="email" class="form-control input-circle-right" placeholder="Email Address", value=<%= current_user.email if current_user%>>
+                          <input type="email" class="form-control input-circle-right" placeholder="Email Address", name="user[email]" value=<%= current_user.email if current_user%>,required>
                         </div>
 
                         <br>
 
-                        <div class="input-icon">
+                        <div id="phone_number" class="input-icon">
                           <i class="fa fa-phone"></i>
-                          <input type="text" class="form-control input-circle" placeholder="Phone Number", name="phone_number">
+                          <input id="ggyy" type="text" class="form-control input-circle" placeholder="Phone Number", name="user[phone_number]" value=<%= current_user.phone_number if current_user%>>
+                          <span class="help-block"><%= current_user.errors.messages[:phone_number][0] if current_user.errors.messages[:phone_number]%></span>
                         </div>
 
                         <br>
@@ -44,45 +60,46 @@
                           <option>台北市 </option>
                         </select>
                         <br>
-                        <select class="form-control" name ="address[district_with_street]">
-                          <option>信義區 忠孝東路五段</option>
-                          <option>信義區 永吉路</option>
-                          <option>南港區 忠孝東路六段</option>
-                          <option>南港區 忠孝東路七段</option>
-                          <option>南港區 玉成街</option>
+                        <div id="hidden_street" style="display: none;"><%= current_user.address.district_with_street unless current_user.address.nil? %></div>
+
+                        <select id="district_with_street" class="form-control" name ="address[district_with_street]">
+                          <option value="信義區 忠孝東路五段">信義區 忠孝東路五段</option>
+                          <option value="信義區 永吉路">信義區 永吉路</option>
+                          <option value="南港區 忠孝東路六段">南港區 忠孝東路六段</option>
+                          <option value="南港區 忠孝東路七段">南港區 忠孝東路七段</option>
+                          <option value="南港區 玉成街">南港區 玉成街</option>
                         </select>
                         <br>
 
-                        <div class="input-icon">
+                        <div class="input-icon placeholder" data-placeholder="巷(選填)">
                           <i class="fa fa-home"></i>
-                          <input type="text" class="form-control input-circle" placeholder="巷(選填)" name="address[lane]">
+                          <input type="text" class="form-control input-circle" name="address[lane]" value=<%= current_user.address.lane if current_user%>>
                         </div>
                         <br>
-                        <div class="input-icon">
+
+                        <div class="input-icon placeholder" data-placeholder="弄(選填)">
                           <i class="fa fa-home"></i>
-                          <input type="text" class="form-control input-circle" placeholder="弄(選填)" name="address[alley]">
+                          <input type="text" class="form-control input-circle" name="address[alley]" value=<%= current_user.address.alley if current_user%>>
                         </div>
                         <br>
-                        <div class="input-icon">
+                        <div class="input-icon placeholder" data-placeholder="號">
                           <i class="fa fa-home"></i>
-                          <input type="text" class="form-control input-circle" placeholder="號" name="address[street_number]">
+                          <input id="male" type="text" class="form-control input-circle" name="address[street_number]"  >
                         </div>
                         <br>
-                        <div class="input-icon">
+                        <div class="input-icon placeholder" data-placeholder="樓">
                           <i class="fa fa-home"></i>
-                          <input type="text" class="form-control input-circle" placeholder="樓" name="address[floor]">
+                          <input type="text" class="form-control input-circle" name="address[floor]" value=<%= current_user.address.floor unless current_user.address.nil?%>>
                         </div>
                         <br>
-                        <div class="input-icon">
+                        <div class="input-icon placeholder" data-placeholder="公司(選填)">
                           <i class="fa fa-home"></i>
-                          <input type="text" class="form-control input-circle" placeholder="公司(選填)">
+                          <input type="text" class="form-control input-circle">
                         </div>
                         <br>
 
                       </div>
                     </div>
-
-
                   </div>
                   <div class="form-actions">
                     <div class="row">
@@ -104,15 +121,35 @@
   <!-- END PAGE CONTENT-->
 
 <script>
-//jQuery(document).ready(function() {
-   // initiate layout and plugins
-  //Metronic.init(); // init metronic core components
-  //Layout.init(); // init current layout
-  //QuickSidebar.init(); // init quick sidebar
-  //Demo.init(); // init demo features
+  jQuery(document).ready(function() {
 
-  //FormSamples.init();
+    var option = "#district_with_street option\[value=\""+ $("#hidden_street").html() +"\"\]"
+    $(option).attr("selected", "selected");
+
+
+
+    if ($("#phone_number > span").html() != ""){
+      $("#phone_number").addClass("has-error");
+    }
+
+
+  });
+
+//$(function() {
+//    $.validator.addMethod("regex", function(value, element, regexpr) {
+//      return regexpr.test(value);
+//    }, "Please enter a valid pasword.");
+//    $("#myForm").validate({
+//      rules: {
+//        experience: {
+//          required: true,
+//          regex: /^[0-9]+$/
+//        }
+//      }
+//    });
 //});
+
+
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

@@ -42,6 +42,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "auto-facebook", "0.42"
+gem 'simple_token_authentication', '~> 1.0'
 
 
 # sms service

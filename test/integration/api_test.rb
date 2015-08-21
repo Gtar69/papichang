@@ -6,6 +6,13 @@ class  ApiTest < ActionDispatch::IntegrationTest
     6.times { Fabricate(:product) }
   end
 
+  test "sign in" do
+  #test "index with token authentication via query params" do
+    get :index, { user_email: "alice@example.com", user_token: "1G8_s7P-V-4MGojaKD7a" }
+    assert_response :success
+  #end
+  end
+
 
   test "create order" do
 

@@ -29,7 +29,9 @@
               <li> <%= link_to("廚房管理系統(KDS)" , kds_admin_orders_path) %></li>
               <li class="divider"></li>
             <% end %>
-            <li> <%= link_to("帳號管理", kds_admin_orders_path) %></li>
+            <li> <%= link_to("帳號管理", accounts_management_path) %></li>
+            <li class="divider"></li>
+            <li> <%= link_to("歷史訂單", accounts_management_path) %></li>
             <li class="divider"></li>
             <li><%= link_to("登出", destroy_user_session_path, :method => :delete ) %></li>
           </ul>
