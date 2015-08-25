@@ -1,0 +1,122 @@
+  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+
+<style>
+  
+/*
+   CSS-Tricks Example
+   by Chris Coyier
+   http://css-tricks.com
+*/
+
+body {
+  background: #393939;
+  color: white;
+  font: 14px Helvetica, sans-serif;
+}
+
+#page-wrap {
+  width: 500px;
+  margin: 100px auto;
+}
+
+h1 {
+  font: 26px Georgia, Serif;
+  margin: 0 0 10px 0;
+}
+form {
+  margin: 50px 0 0 0;
+}
+label {
+  font: bold 20px Helvetica, sans-serif;
+  display: block;
+  float: left;
+  text-align: right;
+  padding: 5px 10px 0 0;
+  width: 140px;
+}
+input[type=text] {
+  float: left;
+  width: 40px;
+  font: bold 20px Helvetica, sans-serif;
+  padding: 3px 0 0 0;
+  text-align: center;
+}
+form div {
+  overflow: hidden;
+  margin: 0 0 5px 0;
+}
+.button {
+  margin: 0 0 0 5px;
+  text-indent: -9999px;
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  float: left;
+  text-align: center;
+  background: url('/assets/buttons.png') no-repeat;
+
+}
+
+
+.dec {
+  background-position: 0 -29px;
+}
+
+.buttons {
+  padding: 20px 0 0 140px;
+}
+</style>
+
+<form method="post" action="">
+      <div class="numbers-row">
+        <label for="name">French Hens</label>
+        <input type="text" name="french-hens" id="french-hens" value="3">
+      <div class="inc button">+</div><div class="dec button">-</div></div>
+      <div class="numbers-row">
+        <label for="name">Turtle Doves</label>
+        <input type="text" name="turtle-doves" id="turtle-doves" value="2">
+      <div class="inc button">+</div><div class="dec button">-</div></div>
+      <div class="numbers-row">
+        <label for="name">Partridges</label>
+        <input type="text" name="partridge" id="partridge" value="1">
+      <div class="inc button">+</div><div class="dec button">-</div></div>
+      <div class="buttons">
+        <input type="submit" value="Submit" id="submit">
+      </div>
+    </form>
+<script>
+  
+
+    jQuery(document).ready(function() {  
+
+      $(function() {
+
+  //$(".numbers-row").append('<div class="inc button">+</div><div class="dec button">-</div>');
+
+  $(".button").on("click", function() {
+    var $button = $(this);
+    var oldValue = $button.parent().find("input").val();
+
+    if ($button.text() == "+") {
+      var newVal = parseFloat(oldValue) + 1;
+    } else {
+     // Don't allow decrementing below zero
+      if (oldValue > 0) {
+        var newVal = parseFloat(oldValue) - 1;
+      } else {
+        newVal = 0;
+      }
+    }
+
+    $button.parent().find("input").val(newVal);
+
+  });
+
+});
+
+
+    });
+
+
+
+</script>

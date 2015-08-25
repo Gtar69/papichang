@@ -1,32 +1,36 @@
-<% if product %>
-                <div class="col-md-6">
-                  <div class="pricing hover-effect">
-                    <div class="pricing-head">
-                      <h3><%=product.name%> <span>
-                      Officia deserunt mollitia </span>
-                      </h3>
-                      <h4><i>$</i><%=product.price%></h4>
-                    </div>
-                    <%= image_tag('shrimp_roll.png', class: 'img-responsive') %>
-                    <div class="pricing-footer">
-                      <p>
-                         <%= product.description %>
-                      </p>
-                      <%= link_to "ADD", add_to_cart_products_path(product_id: product.id), {:class=> "btn yellow-crusta"}%>
-
-                      <a href="/products/add_to_cart" class="btn yellow-crusta">
-                      Add <i class="m-icon-swapright m-icon-white"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-<% end %>
-
 <style>
+
 .hover-part>img:hover {
     background-color: yellow;
     text-decoration: underline;
 }
+
 </style>
+
+
+<% if product %>
+  <div class="col-md-6">
+    <div class="pricing hover-effect">
+      <div class="pricing-head">
+        <h3><%=product.name%> <span>
+        Officia deserunt mollitia </span>
+        </h3>
+        <h4><i>$</i><%=product.price%></h4>
+      </div>
+      <%= image_tag('shrimp_roll.png', class: 'img-responsive') %>
+      <div class="pricing-footer">
+        <p>
+           <%= product.description %>
+        </p>
+        <%= link_to "ADD", add_to_cart_products_path(product_id: product.id), {:class=> "btn yellow-crusta"}%>
+
+        <a href="/products/add_to_cart" class="btn yellow-crusta">
+        Add <i class="m-icon-swapright m-icon-white"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
 

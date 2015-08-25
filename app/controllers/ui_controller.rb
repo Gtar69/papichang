@@ -16,4 +16,8 @@ class UiController < ApplicationController
 
   def product
   end
+
+  def plus
+    render :layout => false
+  end
 end
