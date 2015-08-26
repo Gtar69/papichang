@@ -56,7 +56,7 @@ gem 'jquery-migrate-rails'
 gem 'bootstrap-validator-rails'
 
 ###database gem
-#gem 'mysql2'
+gem 'mysql2'
 
 ### for websocket
 gem 'faye'

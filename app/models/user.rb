@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     if /^09\d{8}/.match(phone_number).nil?
       errors.add(:phone_number, "電話號碼要符合 ex: 0988519755 的形式")
     end
-    binding.pry
+    #binding.pry
     return !(/^09\d{8}/.match(phone_number).nil?)
   end
 

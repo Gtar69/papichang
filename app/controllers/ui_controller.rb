@@ -18,6 +18,6 @@ class UiController < ApplicationController
   end
 
   def plus
-    render :layout => false
+    #render :layout => false
   end
 end
