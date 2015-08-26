@@ -25,6 +25,7 @@ h1 {
   margin: 0 0 10px 0;
 }
 
+
 form {
   margin: 50px 0 0 0;
 }
@@ -60,10 +61,18 @@ form div {
   height: 29px;
   float: left;
   text-align: center;
-  /*background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/buttons.png');*/
-  background: url('/assets/buttons.png') no-repeat;
-  opacity: .6;
-  background-size: cover;
+  background: url('/assets/buttons.png') no-repeat !important;
+}
+
+.button2 {
+  margin: 0 0 0 5px;
+  text-indent: -9999px;
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  float: left;
+  text-align: center;
+  background: url('/assets/buttons2.png') no-repeat !important;
   /*background-color: red;*/
 }
 
@@ -313,9 +322,27 @@ Title: Workbench, Shopping cart
          }
 </style>
 
-<body class="login">
+        <button class="btn btn-success btn-sm">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+
+        <a href="#" class="btn btn-danger btn-sm">
+          <span class="glyphicon glyphicon-minus"></span>
+        </a>
+
+
 
 <form method="post" action="">
+
+  <div class="numbers-row">
+    <product data-name="pork" data-price="100">
+      <label for="name">French Hens</label>
+      <input type="text" name="french-hens" id="french-hens" value="0">
+      <div class="inc button">+</div><div class="dec button">-</div>
+    </product>
+  </div>
+
+
 
   <div class="numbers-row">
     <product data-name="pork" data-price="100">
@@ -353,7 +380,6 @@ Title: Workbench, Shopping cart
      <a class="checkout" href="javascript:void(0);">Checkout</a>
   </details>
 </section>
-</body>
 
 
 <script>
