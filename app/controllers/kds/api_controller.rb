@@ -11,9 +11,6 @@ class Kds::ApiController < ApplicationController
                           delivery_method: order.delivery_method, match_method: order.match_method,
                           aasm_state: order.aasm_state, order_items: order.get_items}
     end
-
-
-
     render json: { waiting_orders: waiting_orders }
   end
 

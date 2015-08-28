@@ -1,5 +1,5 @@
 class Pos::ApiController < ApplicationController
-  protect_from_forgery with: :null_session
+  #protect_from_forgery with: :null_session
 
   #查詢單張訂單(GET)
 
@@ -12,7 +12,7 @@ class Pos::ApiController < ApplicationController
   def get_orders
     # tell me page_number
     order_collection = []
-    orders = Order.order("created_at DESC").page(params[:page_number].to_i).per(5)
+    orders = Order.order("created_at DESC").page(params[:page_number].to_i).per(3)
     orders.each do |order|
       order_items = []
       order.items.each do |order_item|
@@ -28,6 +28,11 @@ class Pos::ApiController < ApplicationController
   #建立訂單(POST)
   def create_order
     begin
+      #handle_order_params
+      if (params[:delivery_method] && params[:match_method]).nil?  
+        render json: {message: "lack of delivery method or match method"}
+        return
+      end
       order = Order.new(delivery_method: params[:delivery_method], match_method: params[:match_method])
       order.create_with_order_items(JSON.parse(params[:order_items]))
       WaitingQueue.create(order_id: order.id)
@@ -42,6 +47,7 @@ class Pos::ApiController < ApplicationController
   def update_order
     begin
       order = Order.find_by_id(params[:order_id])
+      #check_product method should be here
       order.update_with_order_items(params[:order_items])
       render json: {message: 'ok', price: order.total_price}
     rescue Exception => ex
@@ -51,19 +57,30 @@ class Pos::ApiController < ApplicationController
 
   #取消訂單(DELETE)
   def cancel_order
+    #only non-confirmed yet orders can be canceled 
+    begin 
     #check params
-    order = Order.find_by_id(params[:order_id]).delete
-    WaitingQueue.where(order_id: params[:order_id]).delete_all
-    render json: {message: 'ok'}
+      order = Order.find_by_id(params[:order_id]).delete
+      WaitingQueue.where(order_id: params[:order_id]).delete_all
+      render json: {message: 'ok'}
+    rescue Exception => ex
+      render json: {message: "#{ex.message}"}
+    end
+
   end
 
   #結賬步驟(POST)/已出餐
   def confirm_order
-    order = Order.find_by_id(params[:order_id])
-    #binding.pry
-    order.update_column(:aasm_state, "order_paid")
-    WaitingQueue.where(order_id: params[:order_id]).delete_all
-    render json: {message: 'ok'}
+    #filter already confirm 
+    begin
+      order = Order.find_by_id(params[:order_id])
+      #binding.pry
+      order.update_column(:aasm_state, "order_paid")
+      WaitingQueue.where(order_id: params[:order_id]).delete_all
+      render json: {message: 'ok'}
+    rescue Exception => ex
+      render json: {message: "#{ex.message}"}
+    end
   end
 
   private

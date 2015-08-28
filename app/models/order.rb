@@ -50,7 +50,8 @@ class Order < ActiveRecord::Base
   end
 
   def update_with_order_items(order_items)
-    order_items = JSON.parse(order_items)
+    #binding.pry
+    #order_items = JSON.parse(order_items)
     items.delete_all
     order_items.each do |order_item|
       item = items.build

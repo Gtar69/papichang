@@ -41,12 +41,12 @@ Rails.application.routes.draw do
   namespace :kds do
     resources :api do
       collection do
-        get     'queue_status'
+        get 'queue_status'
+        get 'local_queue'
+        get 'internet_queue' 
       end
     end
   end
-
-
 
   namespace :pos do
     resources :api do
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
         get     'get_order'
         get     'get_orders'
         post    'create_order'
-        post    'update_order'
+        patch   'update_order'
         delete  'cancel_order'
         post    'confirm_order'
       end
